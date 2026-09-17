@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Master | 学者同行</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
+      color: #fff;
+      padding: 24px;
+    }
+
+    .lang-select {
+      text-align: center;
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .lang-select h1 {
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .lang-select .sub {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      margin-bottom: 56px;
+    }
+
+    .lang-btns {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .lang-btn {
+      display: block;
+      width: 200px;
+      padding: 36px 20px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 18px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.26);
+      transform: translateY(-5px);
+      border-color: #fff;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+    }
+
+    .lang-btn .flag {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .lang-btn .name {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 520px) {
+      .lang-select h1 { font-size: 1.9rem; }
+      .lang-btn { width: 100%; max-width: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang-select">
+    <h1>Knowledge Master</h1>
+    <p class="sub">学者同行 · AP Learning Resources</p>
+
+    <div class="lang-btns">
+      <a href="zh/index.html" class="lang-btn">
+        <span class="name">中文</span>
+      </a>
+      <a href="en/index.html" class="lang-btn">
+        <span class="name">English</span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
