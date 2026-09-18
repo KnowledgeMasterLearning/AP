@@ -5,6 +5,308 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>宏观经济 | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ===== 上半部：左标题 + 右视频 ===== */
+    .course-top {
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+      flex-wrap: wrap;
+      padding: 40px 0 0;
+    }
+    .course-left {
+      flex: 1 1 380px;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .course-left .cn {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #4a0072;
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+    .course-left .en {
+      font-size: 1.6rem;
+      color: #660099;
+      opacity: 0.7;
+      margin: 16px 0 0;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .course-right {
+      flex: 1 1 420px;
+      min-width: 300px;
+      display: flex;
+      align-items: center;
+    }
+    .video-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      border: 3px solid #000;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      overflow: hidden;
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ===== 课程介绍整体 ===== */
+    .course-desc {
+      margin-top: 72px;
+      background: #faf7fd;
+      border: 1px solid #ede4f7;
+      border-radius: 20px;
+      padding: 48px 44px;
+    }
+    .desc-title {
+      text-align: center;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px dashed #e2d4f0;
+    }
+    .desc-title h2 {
+      font-size: 1.9rem;
+      color: #4a0072;
+      margin: 0;
+    }
+    .desc-title p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    .desc-intro {
+      max-width: 760px;
+      margin: 0 auto 40px;
+      text-align: center;
+      color: #64748b;
+      line-height: 2;
+      font-size: 1.02rem;
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 14px;
+      padding: 26px 32px;
+    }
+    .desc-intro strong { color: #4a0072; }
+
+    /* 单元占比总览 */
+    .units-overview { margin-top: 8px; }
+    .units-overview h3 {
+      font-size: 1.35rem;
+      color: #4a0072;
+      margin-bottom: 20px;
+      padding-left: 14px;
+      border-left: 5px solid #660099;
+    }
+    .weight-list { display: grid; gap: 12px; }
+    .weight-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 12px;
+      padding: 14px 20px;
+    }
+    .weight-row .unit-tag {
+      flex-shrink: 0;
+      font-weight: 700;
+      color: #660099;
+      font-size: 0.95rem;
+      min-width: 62px;
+    }
+    .weight-row .unit-name {
+      flex: 1;
+      color: #1e293b;
+      font-size: 0.98rem;
+    }
+    .weight-row .unit-pct {
+      flex-shrink: 0;
+      background: #660099;
+      color: #fff;
+      font-size: 0.82rem;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .weight-note {
+      margin-top: 16px;
+      background: #f3e8ff;
+      border-left: 4px solid #660099;
+      border-radius: 0 10px 10px 0;
+      padding: 14px 20px;
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ===== 各单元卡片 ===== */
+    .unit-cards {
+      margin-top: 48px;
+      display: grid;
+      gap: 28px;
+    }
+    .unit-card {
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .unit-card:hover {
+      box-shadow: 0 12px 32px rgba(102,0,153,0.1);
+    }
+    .unit-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
+      color: #fff;
+      padding: 18px 26px;
+      flex-wrap: wrap;
+    }
+    .unit-head .title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .unit-head .title small {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+    .unit-head .pct {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 5px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .unit-body { padding: 24px 26px 28px; }
+    .unit-body .unit-desc {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed #ede4f7;
+      line-height: 1.8;
+    }
+    .topic-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .topic-list li {
+      line-height: 1.8;
+      color: #475569;
+      font-size: 0.94rem;
+      padding-left: 16px;
+      border-left: 3px solid #ede9fe;
+    }
+    .topic-list li strong {
+      color: #4a0072;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.96rem;
+    }
+
+    /* ===== 下方区域 ===== */
+    .course-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      margin-top: 64px;
+    }
+    .ced-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 24px 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+      transition: all 0.2s;
+    }
+    .ced-box:hover {
+      border-color: #660099;
+      box-shadow: 0 6px 18px rgba(102,0,153,0.1);
+    }
+    .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
+    .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .option-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.3s;
+      background: #fff;
+    }
+    .option-card:hover {
+      border-color: #660099;
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(102,0,153,0.15);
+    }
+    .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
+    .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
+
+    .download-btn {
+      flex-shrink: 0;
+      padding: 10px 24px;
+      background: #660099;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background: #4a0072; }
+
+    @media (max-width: 700px) {
+      .course-left .cn { font-size: 2.4rem; }
+      .course-left .en { font-size: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      .course-desc { padding: 28px 20px; }
+      .option-grid { grid-template-columns: 1fr; }
+      .unit-head { flex-direction: column; align-items: flex-start; }
+      .weight-row { flex-wrap: wrap; }
+    }
+  </style>
 </head>
 <body>
 
@@ -15,54 +317,244 @@
         <a href="index.html">首页</a>
         <a href="courses.html" class="active">课程</a>
         <a href="about.html">关于我</a>
-        <a href="../en/index.html" class="lang-switch">EN</a>
+        <a href="../en/macroeconomics.html" class="lang-switch">EN</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>宏观经济</h1>
-      <p>Macroeconomics</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
 
-      <div class="course-intro">
-        【课程介绍占位】这里将介绍 AP 宏观经济的课程内容、考试重点与学习建议。
+      <!-- 上半部：左标题 + 右视频 -->
+      <div class="course-top">
+        <div class="course-left">
+          <h1 class="cn">宏观经济</h1>
+          <p class="en">Macroeconomics</p>
+        </div>
+        <div class="course-right">
+          <div class="video-box">
+            视频占位
+            <!--
+            <iframe src="https://player.bilibili.com/player.html?bvid=你的BV号&p=1"
+                    scrolling="no" border="0" frameborder="no"
+                    framespacing="0" allowfullscreen="true"></iframe>
+            -->
+          </div>
+        </div>
       </div>
 
-      <div class="download-section">
-        <h2>📥 资料下载</h2>
-        <div class="download-list">
+      <!-- ===== 课程介绍 ===== -->
+      <div class="course-desc">
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 讲义 PDF</h4>
-              <p>课程讲义与知识点整理</p>
+        <div class="desc-title">
+          <h2>课程介绍</h2>
+          <p>AP MACROECONOMICS · COURSE OVERVIEW</p>
+        </div>
+
+        <div class="desc-intro">
+          AP 宏观经济学课程共分为 <strong>6 个单元</strong>，围绕四个核心概念展开：
+          <strong>衡量经济表现</strong>、<strong>经济波动与稳定政策</strong>、
+          <strong>金融部门与货币政策</strong>、<strong>开放经济与国际金融</strong>。
+        </div>
+
+        <!-- 单元占比总览 -->
+        <div class="units-overview">
+          <h3>单元分布与考试占比</h3>
+          <div class="weight-list">
+            <div class="weight-row">
+              <span class="unit-tag">Unit 1</span>
+              <span class="unit-name">Basic Economic Concepts 基本经济概念</span>
+              <span class="unit-pct">5–10%</span>
             </div>
-            <a href="../files/macro-notes.pdf" class="download-btn" download>下载</a>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 2</span>
+              <span class="unit-name">Economic Indicators and the Business Cycle 经济指标与商业周期</span>
+              <span class="unit-pct">12–17%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 3</span>
+              <span class="unit-name">National Income and Price Determination 国民收入与价格决定</span>
+              <span class="unit-pct">17–27%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 4</span>
+              <span class="unit-name">Financial Sector 金融部门</span>
+              <span class="unit-pct">18–23%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 5</span>
+              <span class="unit-name">Long-Run Consequences of Stabilization Policies 稳定政策的长期后果</span>
+              <span class="unit-pct">20–30%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 6</span>
+              <span class="unit-name">Open Economy—International Trade and Finance 开放经济——国际贸易与金融</span>
+              <span class="unit-pct">10–13%</span>
+            </div>
+          </div>
+          <div class="weight-note">
+            <strong>说明</strong>：Unit 3、Unit 4 和 Unit 5 合计占考试约 <strong>55–80%</strong>，
+            是整门课程的重中之重。Unit 4（金融部门）和 Unit 5（稳定政策的长期后果）
+            合计占考试近一半，务必优先掌握。
+          </div>
+        </div>
+
+        <!-- 各单元卡片 -->
+        <div class="unit-cards">
+
+          <!-- Unit 1 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 1 · Basic Economic Concepts<small>基本经济概念</small></h3>
+              <span class="pct">5–10%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">建立宏观经济学的分析基础，核心是稀缺性、机会成本和比较优势。</p>
+              <ul class="topic-list">
+                <li><strong>1.1 Scarcity 稀缺性</strong>资源有限与欲望无限的矛盾；稀缺性是经济学的根本问题</li>
+                <li><strong>1.2 Opportunity Cost and the PPC 机会成本与生产可能性曲线</strong>PPC 的绘制与解读；机会成本、效率、增长；PPC 的形状取决于机会成本是常数、递增还是递减</li>
+                <li><strong>1.3 Comparative Advantage and Gains from Trade 比较优势与贸易收益</strong>绝对优势 vs. 比较优势；专业化与贸易带来的收益；贸易条件的确定</li>
+                <li><strong>1.4 Demand 需求</strong>需求法则；需求曲线向下倾斜；需求的变化 vs. 需求量的变化</li>
+                <li><strong>1.5 Supply 供给</strong>供给法则；供给曲线向上倾斜；供给的变化 vs. 供给量的变化</li>
+                <li><strong>1.6 Market Equilibrium, Disequilibrium, and Changes 市场均衡与非均衡</strong>均衡的确定；过剩与短缺；供需移动对均衡价格和数量的影响</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 真题 PDF</h4>
-              <p>包含往年真题</p>
+          <!-- Unit 2 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 2 · Economic Indicators and the Business Cycle<small>经济指标与商业周期</small></h3>
+              <span class="pct">12–17%</span>
             </div>
-            <a href="../files/macro-past-papers.pdf" class="download-btn" download>下载</a>
+            <div class="unit-body">
+              <p class="unit-desc">学习如何衡量一个国家的经济表现，包括 GDP、失业率和通货膨胀。</p>
+              <ul class="topic-list">
+                <li><strong>2.1 The Circular Flow and GDP 循环流向图与 GDP</strong>GDP 的定义；循环流向图；三种衡量 GDP 的方法；名义 GDP 的计算</li>
+                <li><strong>2.2 Limitations of GDP GDP 的局限性</strong>GDP 不计算非市场交易、地下经济、环境质量和生活质量</li>
+                <li><strong>2.3 Unemployment 失业</strong>劳动力、失业率、劳动力参与率的定义与计算；失业类型（摩擦性、结构性、周期性）；自然失业率</li>
+                <li><strong>2.4 Price Indices and Inflation 价格指数与通货膨胀</strong>CPI 的定义与计算；通货膨胀率的计算；实际变量的计算；CPI 的缺陷</li>
+                <li><strong>2.5 Costs of Inflation 通货膨胀的成本</strong>未预期通货膨胀对债权人和债务人的影响；菜单成本；鞋底成本</li>
+                <li><strong>2.6 Real v. Nominal GDP 实际 GDP 与名义 GDP</strong>名义与实际 GDP 的区别；GDP 平减指数的计算</li>
+                <li><strong>2.7 Business Cycles 商业周期</strong>商业周期的阶段（扩张、衰退）和转折点（峰值、谷底）；产出缺口；潜在 GDP</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 CB 题库 PDF</h4>
-              <p>College Board 官方题库</p>
+          <!-- Unit 3 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 3 · National Income and Price Determination<small>国民收入与价格决定</small></h3>
+              <span class="pct">17–27%</span>
             </div>
-            <a href="../files/macro-cb-bank.pdf" class="download-btn" download>下载</a>
+            <div class="unit-body">
+              <p class="unit-desc">建立 AD-AS 模型，分析经济波动的原因和短期稳定政策的效果。</p>
+              <ul class="topic-list">
+                <li><strong>3.1 Aggregate Demand (AD) 总需求</strong>AD 曲线的定义与向下倾斜的原因（财富效应、利率效应、汇率效应）；AD 曲线移动的因素</li>
+                <li><strong>3.2 Multipliers 乘数</strong>支出乘数、税收乘数；边际消费倾向与边际储蓄倾向</li>
+                <li><strong>3.3 Short-Run Aggregate Supply (SRAS) 短期总供给</strong>SRAS 曲线的定义与向上倾斜的原因（粘性工资）；SRAS 曲线移动的因素</li>
+                <li><strong>3.4 Long-Run Aggregate Supply (LRAS) 长期总供给</strong>LRAS 曲线垂直的原因；潜在 GDP；短期与长期的区别</li>
+                <li><strong>3.5 Equilibrium in the AD-AS Model AD-AS 模型中的均衡</strong>短期均衡与长期均衡；衰退性缺口与通货膨胀缺口</li>
+                <li><strong>3.6 Changes in the AD-AS Model 短期变化</strong>需求冲击与供给冲击的影响；需求拉动型与成本推动型通货膨胀</li>
+                <li><strong>3.7 Long-Run Self-Adjustment 长期自我调节</strong>工资和价格灵活调整使经济自动恢复充分就业</li>
+                <li><strong>3.8 Fiscal Policy 财政政策</strong>扩张性与紧缩性财政政策；政府支出与税收对 AD 的影响；政策时滞</li>
+                <li><strong>3.9 Automatic Stabilizers 自动稳定器</strong>累进所得税和转移支付如何自动稳定经济</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 4 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 4 · Financial Sector<small>金融部门</small></h3>
+              <span class="pct">18–23%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">研究货币、银行系统和中央银行如何通过货币政策影响经济。</p>
+              <ul class="topic-list">
+                <li><strong>4.1 Financial Assets 金融资产</strong>金融资产的定义与类型；股票与债券的区别</li>
+                <li><strong>4.2 Nominal v. Real Interest Rates 名义利率与实际利率</strong>费雪方程；名义利率与实际利率的区别</li>
+                <li><strong>4.3 Definition, Measurement, and Functions of Money 货币的定义、衡量与功能</strong>货币的三大功能；M1 与 M2 的定义；货币基础</li>
+                <li><strong>4.4 Banking and the Expansion of the Money Supply 银行与货币供给扩张</strong>银行资产负债表；法定准备金与超额准备金；货币乘数；银行创造货币的过程</li>
+                <li><strong>4.5 The Money Market 货币市场</strong>货币需求与货币供给；均衡利率的决定；货币政策对利率的影响</li>
+                <li><strong>4.6 Monetary Policy 货币政策</strong>扩张性与紧缩性货币政策；公开市场操作；准备金利率；政策利率</li>
+                <li><strong>4.7 The Loanable Funds Market 可贷资金市场</strong>可贷资金的供给与需求；利率的决定；挤出效应</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 5 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 5 · Long-Run Consequences of Stabilization Policies<small>稳定政策的长期后果</small></h3>
+              <span class="pct">20–30%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">分析稳定政策的长期影响，核心是菲利普斯曲线和经济增长。</p>
+              <ul class="topic-list">
+                <li><strong>5.1 Fiscal and Monetary Policy Actions 短期政策行动</strong>政策组合对 AD、产出、价格和利率的影响</li>
+                <li><strong>5.2 The Phillips Curve 菲利普斯曲线</strong>短期与长期菲利普斯曲线；通货膨胀与失业的短期权衡；自然失业率；供给与需求冲击对 SRPC 的影响</li>
+                <li><strong>5.3 Money Growth and Inflation 货币增长与通货膨胀</strong>货币数量论；MV = PQ；货币供给增长与通货膨胀的关系</li>
+                <li><strong>5.4 Government Deficits and the National Debt 政府赤字与国债</strong>预算赤字与盈余；国债的定义；赤字对利率和投资的影响</li>
+                <li><strong>5.5 Crowding Out 挤出效应</strong>政府借款如何推高利率并减少私人投资</li>
+                <li><strong>5.6 Economic Growth 经济增长</strong>长期经济增长的源泉；实物资本形成；人力资本；技术进步；储蓄与投资的作用</li>
+                <li><strong>5.7 Public Policy and Economic Growth 公共政策与经济增长</strong>促进长期经济增长的政策；教育、基础设施、研发、产权保护</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 6 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 6 · Open Economy<small>开放经济——国际贸易与金融</small></h3>
+              <span class="pct">10–13%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">研究开放经济中的国际贸易、汇率和国际资本流动。</p>
+              <ul class="topic-list">
+                <li><strong>6.1 Balance of Payments Accounts 国际收支账户</strong>经常账户与资本与金融账户；国际收支恒等式</li>
+                <li><strong>6.2 Exchange Rates 汇率</strong>汇率的定义；升值与贬值</li>
+                <li><strong>6.3 The Foreign Exchange Market 外汇市场</strong>外汇市场的供给与需求；均衡汇率的决定</li>
+                <li><strong>6.4 Effect of Policy and Economic Conditions on FX Market 政策与经济条件变化的影响</strong>利率变化、通胀变化、资本流动对汇率的影响</li>
+                <li><strong>6.5 Changes in FX Market and Net Exports 外汇市场变化与净出口</strong>汇率变化对净出口和总需求的影响</li>
+                <li><strong>6.6 Real Interest Rates and International Capital Flows 实际利率与国际资本流动</strong>实际利率差异如何影响国际资本流动和汇率</li>
+              </ul>
+            </div>
           </div>
 
         </div>
+
+      </div>
+
+      <!-- 下方区域 -->
+      <div class="course-bottom">
+
+        <div class="ced-box">
+          <div class="info">
+            <h4>📄 下载 CED</h4>
+            <p>College Board 官方课程与考试说明</p>
+          </div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-macroeconomics-course-and-exam-description.pdf"
+             class="download-btn"
+             target="_blank"
+             rel="noopener">
+            下载
+          </a>
+        </div>
+
+        <div class="option-grid">
+          <a href="macro-past-papers.html" class="option-card">
+            <div class="icon">📄</div>
+            <h3>Past Papers</h3>
+            <p>往年真题试卷</p>
+          </a>
+          <a href="macro-cb-bank.html" class="option-card">
+            <div class="icon">📝</div>
+            <h3>CB 题库</h3>
+            <p>College Board 官方题库</p>
+          </a>
+        </div>
+
       </div>
 
     </div>
