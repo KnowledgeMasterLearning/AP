@@ -14,6 +14,24 @@
       border-left: 5px solid #660099;
     }
     .section-sub:first-of-type { margin-top: 8px; }
+
+    /* 多按钮堆叠 */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .btn-group .download-btn {
+      width: 100%;
+      text-align: center;
+      padding: 8px 20px;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 600px) {
+      .btn-group { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -44,15 +62,17 @@
         <a href="psychology.html" style="color:#660099;text-decoration:none;">← 返回心理学</a>
       </p>
 
-      <!-- ===== 整卷 ===== -->
+      <!-- ===== 完整套卷 ===== -->
       <h3 class="section-sub">完整套卷</h3>
       <div class="download-list">
 
         <div class="download-item">
           <div class="info"><h4>📄 2024 年真题</h4><p>完整套卷（含答案）</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-full-set-2024.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-full-set-2024-mcq-ans.pdf" class="download-btn" target="_blank" rel="noopener">MCQ 答案</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-full-set-2024-frq-ans.pdf" class="download-btn" target="_blank" rel="noopener">FRQ 答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-full-set-2024.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-full-set-2024-mcq-ans.pdf" class="download-btn" target="_blank" rel="noopener">MCQ 答案</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-full-set-2024-frq-ans.pdf" class="download-btn" target="_blank" rel="noopener">FRQ 答案</a>
+          </div>
         </div>
 
         <div class="download-item">
@@ -103,50 +123,66 @@
 
         <div class="download-item">
           <div class="info"><h4>📝 2024 FRQ · Set 1</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
         <div class="download-item">
           <div class="info"><h4>📝 2024 FRQ · Set 2</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2024-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
         <div class="download-item">
           <div class="info"><h4>📝 2023 FRQ · Set 1</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
         <div class="download-item">
           <div class="info"><h4>📝 2023 FRQ · Set 2</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2023-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
         <div class="download-item">
           <div class="info"><h4>📝 2022 FRQ · Set 1</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
         <div class="download-item">
           <div class="info"><h4>📝 2022 FRQ · Set 2</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2022-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
         <div class="download-item">
           <div class="info"><h4>📝 2021 FRQ · Set 1</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set1.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set1-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
         <div class="download-item">
           <div class="info"><h4>📝 2021 FRQ · Set 2</h4><p>Free-Response Questions</p></div>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
-          <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          <div class="btn-group">
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set2.pdf" class="download-btn" target="_blank" rel="noopener">题目</a>
+            <a href="https://github.com/KnowledgeMasterLearning/AP/releases/download/Psych-past-exam/Psych-past-exam-frq-2021-set2-ans.pdf" class="download-btn" target="_blank" rel="noopener">答案</a>
+          </div>
         </div>
 
       </div>
