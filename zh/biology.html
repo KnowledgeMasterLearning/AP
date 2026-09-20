@@ -5,6 +5,308 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>生物学 | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ===== 上半部：左标题 + 右视频 ===== */
+    .course-top {
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+      flex-wrap: wrap;
+      padding: 40px 0 0;
+    }
+    .course-left {
+      flex: 1 1 380px;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .course-left .cn {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #4a0072;
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+    .course-left .en {
+      font-size: 1.6rem;
+      color: #660099;
+      opacity: 0.7;
+      margin: 16px 0 0;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .course-right {
+      flex: 1 1 420px;
+      min-width: 300px;
+      display: flex;
+      align-items: center;
+    }
+    .video-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      border: 3px solid #000;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      overflow: hidden;
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ===== 课程介绍整体 ===== */
+    .course-desc {
+      margin-top: 72px;
+      background: #faf7fd;
+      border: 1px solid #ede4f7;
+      border-radius: 20px;
+      padding: 48px 44px;
+    }
+    .desc-title {
+      text-align: center;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px dashed #e2d4f0;
+    }
+    .desc-title h2 {
+      font-size: 1.9rem;
+      color: #4a0072;
+      margin: 0;
+    }
+    .desc-title p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    .desc-intro {
+      max-width: 760px;
+      margin: 0 auto 40px;
+      text-align: center;
+      color: #64748b;
+      line-height: 2;
+      font-size: 1.02rem;
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 14px;
+      padding: 26px 32px;
+    }
+    .desc-intro strong { color: #4a0072; }
+
+    /* 单元占比总览 */
+    .units-overview { margin-top: 8px; }
+    .units-overview h3 {
+      font-size: 1.35rem;
+      color: #4a0072;
+      margin-bottom: 20px;
+      padding-left: 14px;
+      border-left: 5px solid #660099;
+    }
+    .weight-list { display: grid; gap: 12px; }
+    .weight-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 12px;
+      padding: 14px 20px;
+    }
+    .weight-row .unit-tag {
+      flex-shrink: 0;
+      font-weight: 700;
+      color: #660099;
+      font-size: 0.95rem;
+      min-width: 62px;
+    }
+    .weight-row .unit-name {
+      flex: 1;
+      color: #1e293b;
+      font-size: 0.98rem;
+    }
+    .weight-row .unit-pct {
+      flex-shrink: 0;
+      background: #660099;
+      color: #fff;
+      font-size: 0.82rem;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .weight-note {
+      margin-top: 16px;
+      background: #f3e8ff;
+      border-left: 4px solid #660099;
+      border-radius: 0 10px 10px 0;
+      padding: 14px 20px;
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ===== 各单元卡片 ===== */
+    .unit-cards {
+      margin-top: 48px;
+      display: grid;
+      gap: 28px;
+    }
+    .unit-card {
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .unit-card:hover {
+      box-shadow: 0 12px 32px rgba(102,0,153,0.1);
+    }
+    .unit-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
+      color: #fff;
+      padding: 18px 26px;
+      flex-wrap: wrap;
+    }
+    .unit-head .title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .unit-head .title small {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+    .unit-head .pct {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 5px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .unit-body { padding: 24px 26px 28px; }
+    .unit-body .unit-desc {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed #ede4f7;
+      line-height: 1.8;
+    }
+    .topic-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .topic-list li {
+      line-height: 1.8;
+      color: #475569;
+      font-size: 0.94rem;
+      padding-left: 16px;
+      border-left: 3px solid #ede9fe;
+    }
+    .topic-list li strong {
+      color: #4a0072;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.96rem;
+    }
+
+    /* ===== 下方区域 ===== */
+    .course-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      margin-top: 64px;
+    }
+    .ced-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 24px 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+      transition: all 0.2s;
+    }
+    .ced-box:hover {
+      border-color: #660099;
+      box-shadow: 0 6px 18px rgba(102,0,153,0.1);
+    }
+    .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
+    .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .option-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.3s;
+      background: #fff;
+    }
+    .option-card:hover {
+      border-color: #660099;
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(102,0,153,0.15);
+    }
+    .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
+    .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
+
+    .download-btn {
+      flex-shrink: 0;
+      padding: 10px 24px;
+      background: #660099;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background: #4a0072; }
+
+    @media (max-width: 700px) {
+      .course-left .cn { font-size: 2.4rem; }
+      .course-left .en { font-size: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      .course-desc { padding: 28px 20px; }
+      .option-grid { grid-template-columns: 1fr; }
+      .unit-head { flex-direction: column; align-items: flex-start; }
+      .weight-row { flex-wrap: wrap; }
+    }
+  </style>
 </head>
 <body>
 
@@ -15,54 +317,297 @@
         <a href="index.html">首页</a>
         <a href="courses.html" class="active">课程</a>
         <a href="about.html">关于我</a>
-        <a href="../en/index.html" class="lang-switch">EN</a>
+        <a href="../en/biology.html" class="lang-switch">EN</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>生物学</h1>
-      <p>Biology</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
 
-      <div class="course-intro">
-        【课程介绍占位】这里将介绍 AP 生物学的课程内容、考试重点与学习建议。
+      <!-- 上半部：左标题 + 右视频 -->
+      <div class="course-top">
+        <div class="course-left">
+          <h1 class="cn">生物学</h1>
+          <p class="en">Biology</p>
+        </div>
+        <div class="course-right">
+          <div class="video-box">
+            视频占位
+            <!--
+            <iframe src="https://player.bilibili.com/player.html?bvid=你的BV号&p=1"
+                    scrolling="no" border="0" frameborder="no"
+                    framespacing="0" allowfullscreen="true"></iframe>
+            -->
+          </div>
+        </div>
       </div>
 
-      <div class="download-section">
-        <h2>📥 资料下载</h2>
-        <div class="download-list">
+      <!-- ===== 课程介绍 ===== -->
+      <div class="course-desc">
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 讲义 PDF</h4>
-              <p>课程讲义与知识点整理</p>
+        <div class="desc-title">
+          <h2>课程介绍</h2>
+          <p>AP BIOLOGY · COURSE OVERVIEW</p>
+        </div>
+
+        <div class="desc-intro">
+          AP 生物学课程共分为 <strong>8 个单元</strong>，围绕四个核心概念展开：
+          <strong>进化</strong>、<strong>能量与物质</strong>、
+          <strong>信息存储与传递</strong>、<strong>系统相互作用</strong>。
+        </div>
+
+        <!-- 单元占比总览 -->
+        <div class="units-overview">
+          <h3>单元分布与考试占比</h3>
+          <div class="weight-list">
+            <div class="weight-row">
+              <span class="unit-tag">Unit 1</span>
+              <span class="unit-name">Chemistry of Life 生命的化学基础</span>
+              <span class="unit-pct">8–11%</span>
             </div>
-            <a href="../files/bio-notes.pdf" class="download-btn" download>下载</a>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 2</span>
+              <span class="unit-name">Cells 细胞</span>
+              <span class="unit-pct">10–13%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 3</span>
+              <span class="unit-name">Cellular Energetics 细胞能量学</span>
+              <span class="unit-pct">12–16%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 4</span>
+              <span class="unit-name">Cell Communication and Cell Cycle 细胞通讯与细胞周期</span>
+              <span class="unit-pct">10–15%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 5</span>
+              <span class="unit-name">Heredity 遗传</span>
+              <span class="unit-pct">8–11%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 6</span>
+              <span class="unit-name">Gene Expression and Regulation 基因表达与调控</span>
+              <span class="unit-pct">12–16%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 7</span>
+              <span class="unit-name">Natural Selection 自然选择</span>
+              <span class="unit-pct">13–20%</span>
+            </div>
+            <div class="weight-row">
+              <span class="unit-tag">Unit 8</span>
+              <span class="unit-name">Ecology 生态学</span>
+              <span class="unit-pct">10–15%</span>
+            </div>
+          </div>
+          <div class="weight-note">
+            <strong>说明</strong>：Unit 7（自然选择）占比最高，是整门课程的核心主线；
+            Unit 3 和 Unit 6 并列第二，均为重点单元。
+          </div>
+        </div>
+
+        <!-- 各单元卡片 -->
+        <div class="unit-cards">
+
+          <!-- Unit 1 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 1 · Chemistry of Life<small>生命的化学基础</small></h3>
+              <span class="pct">8–11%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">建立生物学所需的化学基础，重点理解水、元素和生物大分子的结构与功能。</p>
+              <ul class="topic-list">
+                <li><strong>1.1 Structure of Water and Hydrogen Bonding 水的结构与氢键</strong>水的极性、氢键、比热容、溶剂特性、内聚与附着力；水对生命的重要性</li>
+                <li><strong>1.2 Elements of Life 生命元素</strong>生物体主要元素（CHNOPS）；元素在生物分子中的角色</li>
+                <li><strong>1.3 Introduction to Macromolecules 生物大分子导论</strong>单体与聚合物；脱水缩合与水解反应</li>
+                <li><strong>1.4 Carbohydrates 碳水化合物</strong>单糖、双糖、多糖的结构与功能；能量储存与结构支持</li>
+                <li><strong>1.5 Lipids 脂质</strong>脂肪酸、甘油三酯、磷脂、固醇；疏水性与膜结构；能量储存</li>
+                <li><strong>1.6 Nucleic Acids 核酸</strong>DNA 与 RNA 的结构；核苷酸组成；遗传信息的储存与传递</li>
+                <li><strong>1.7 Proteins 蛋白质</strong>氨基酸结构；肽键；蛋白质四级结构；结构与功能的关系；变性</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 真题 PDF</h4>
-              <p>包含往年真题</p>
+          <!-- Unit 2 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 2 · Cells<small>细胞</small></h3>
+              <span class="pct">10–13%</span>
             </div>
-            <a href="../files/bio-past-papers.pdf" class="download-btn" download>下载</a>
+            <div class="unit-body">
+              <p class="unit-desc">聚焦细胞结构与功能，重点理解膜的结构与运输机制。</p>
+              <ul class="topic-list">
+                <li><strong>2.1 Cell Structure and Function 细胞结构与功能</strong>原核 vs. 真核细胞；细胞器结构与功能；内共生学说</li>
+                <li><strong>2.2 Cell Size 细胞大小</strong>表面积与体积比；为什么细胞体积小更有效率</li>
+                <li><strong>2.3 Plasma Membrane 质膜</strong>磷脂双分子层；流动镶嵌模型；膜蛋白功能</li>
+                <li><strong>2.4 Membrane Permeability 膜通透性</strong>选择性通透；影响物质跨膜的因素</li>
+                <li><strong>2.5 Membrane Transport 膜运输</strong>被动运输 vs. 主动运输；扩散、渗透、泵</li>
+                <li><strong>2.6 Facilitated Diffusion 易化扩散</strong>通道蛋白与载体蛋白；浓度梯度驱动</li>
+                <li><strong>2.7 Tonicity and Osmoregulation 张力与渗透调节</strong>高渗、低渗、等渗溶液；细胞体积变化；渗透调节机制</li>
+                <li><strong>2.8 Mechanisms of Transport 运输机制</strong>钠钾泵；协同运输；内吞与外排</li>
+                <li><strong>2.9 Cell Compartmentalization 细胞区室化</strong>真核细胞内膜系统的功能与意义</li>
+                <li><strong>2.10 Origins of Cell Compartmentalization 细胞区室化的起源</strong>内共生学说；膜系统的进化</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 CB 题库 PDF</h4>
-              <p>College Board 官方题库</p>
+          <!-- Unit 3 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 3 · Cellular Energetics<small>细胞能量学</small></h3>
+              <span class="pct">12–16%</span>
             </div>
-            <a href="../files/bio-cb-bank.pdf" class="download-btn" download>下载</a>
+            <div class="unit-body">
+              <p class="unit-desc">研究细胞如何获取和利用能量，核心是酶、光合作用和细胞呼吸。</p>
+              <ul class="topic-list">
+                <li><strong>3.1 Enzymes 酶</strong>酶的结构与功能；活性位点；催化机制；影响酶活性的因素</li>
+                <li><strong>3.2 Environmental Impacts on Enzyme Function 环境对酶功能的影响</strong>温度、pH、底物浓度、抑制剂对酶活性的影响</li>
+                <li><strong>3.3 Cellular Energy 细胞能量</strong>ATP 的结构与功能；能量耦合；氧化还原反应</li>
+                <li><strong>3.4 Photosynthesis 光合作用</strong>光反应与卡尔文循环；光能转化为化学能；叶绿体结构</li>
+                <li><strong>3.5 Cellular Respiration 细胞呼吸</strong>糖酵解、柠檬酸循环、氧化磷酸化；线粒体结构；ATP 产量</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 4 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 4 · Cell Communication and Cell Cycle<small>细胞通讯与细胞周期</small></h3>
+              <span class="pct">10–15%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">研究细胞如何接收和响应信号，以及细胞如何分裂和调控周期。</p>
+              <ul class="topic-list">
+                <li><strong>4.1 Cell Communication 细胞通讯</strong>信号传导的类型；局部与长距离通讯</li>
+                <li><strong>4.2 Introduction to Signal Transduction 信号转导导论</strong>信号接收、转导、响应三阶段</li>
+                <li><strong>4.3 Signal Transduction Pathways 信号转导通路</strong>受体类型；第二信使；磷酸化级联</li>
+                <li><strong>4.4 Feedback 反馈</strong>负反馈与正反馈；反馈在生物系统中的作用</li>
+                <li><strong>4.5 Cell Cycle 细胞周期</strong>间期与分裂期；有丝分裂各阶段；细胞周期调控</li>
+                <li><strong>4.6 Regulation of Cell Cycle 细胞周期调控</strong>检查点；周期蛋白与 CDK；癌变与细胞周期失控</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 5 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 5 · Heredity<small>遗传</small></h3>
+              <span class="pct">8–11%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">研究遗传信息的传递规律，从减数分裂到孟德尔遗传。</p>
+              <ul class="topic-list">
+                <li><strong>5.1 Meiosis 减数分裂</strong>减数分裂各阶段；同源染色体分离；配子形成</li>
+                <li><strong>5.2 Meiosis and Genetic Diversity 减数分裂与遗传多样性</strong>交叉互换；独立分配；遗传变异来源</li>
+                <li><strong>5.3 Mendelian Genetics 孟德尔遗传学</strong>显性与隐性；分离定律；自由组合定律；庞尼特方格</li>
+                <li><strong>5.4 Non-Mendelian Genetics 非孟德尔遗传</strong>不完全显性、共显性、多等位基因、多基因遗传、连锁基因</li>
+                <li><strong>5.5 Environmental Effects on Phenotype 环境对表型的影响</strong>表型 = 基因型 + 环境；环境因素对基因表达的影响</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 6 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 6 · Gene Expression and Regulation<small>基因表达与调控</small></h3>
+              <span class="pct">12–16%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">深入分子层面，研究 DNA 如何复制、转录、翻译并调控。</p>
+              <ul class="topic-list">
+                <li><strong>6.1 DNA and RNA Structure DNA 与 RNA 结构</strong>核苷酸结构；双螺旋模型；RNA 类型与功能</li>
+                <li><strong>6.2 DNA Replication DNA 复制</strong>半保留复制；复制叉；关键酶（解旋酶、聚合酶、连接酶）</li>
+                <li><strong>6.3 Transcription and RNA Processing 转录与 RNA 加工</strong>转录机制；mRNA 加工（加帽、加尾、剪接）</li>
+                <li><strong>6.4 Translation 翻译</strong>遗传密码；核糖体；tRNA；蛋白质合成过程</li>
+                <li><strong>6.5 Regulation of Gene Expression 基因表达调控</strong>原核操纵子模型；真核转录调控；表观遗传</li>
+                <li><strong>6.6 Gene Expression and Cell Specialization 基因表达与细胞分化</strong>细胞分化；组织特异性基因表达</li>
+                <li><strong>6.7 Mutations 突变</strong>点突变、移码突变；突变对蛋白质功能的影响</li>
+                <li><strong>6.8 Biotechnology 生物技术</strong>PCR、凝胶电泳、DNA 测序、CRISPR 等工具与应用</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 7 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 7 · Natural Selection<small>自然选择</small></h3>
+              <span class="pct">13–20%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">AP 生物学的核心主线，研究进化的机制与证据。</p>
+              <ul class="topic-list">
+                <li><strong>7.1 Introduction to Natural Selection 自然选择导论</strong>达尔文进化论；自然选择的基本原理</li>
+                <li><strong>7.2 Natural Selection 自然选择</strong>变异、遗传、选择压力；适应与进化</li>
+                <li><strong>7.3 Artificial Selection 人工选择</strong>人类定向选择；与自然选择的对比</li>
+                <li><strong>7.4 Population Genetics 群体遗传学</strong>基因库；等位基因频率；哈迪-温伯格原理</li>
+                <li><strong>7.5 Hardy-Weinberg Equilibrium 哈迪-温伯格平衡</strong>平衡条件；偏离平衡的进化力量</li>
+                <li><strong>7.6 Evidence of Evolution 进化的证据</strong>化石记录、解剖学、分子生物学、生物地理学证据</li>
+                <li><strong>7.7 Common Ancestry 共同祖先</strong>系统发育树；同源结构 vs. 同功结构</li>
+                <li><strong>7.8 Continuing Evolution 持续进化</strong>抗生素耐药性、杀虫剂抗性等现代进化实例</li>
+                <li><strong>7.9 Phylogeny 系统发育学</strong>系统发育树的构建与解读；分子钟</li>
+                <li><strong>7.10 Speciation 物种形成</strong>地理隔离与生殖隔离；同域与异域物种形成</li>
+                <li><strong>7.11 Variations in Populations 种群变异</strong>遗传漂变、基因流、突变、选择对变异的影响</li>
+                <li><strong>7.12 Origins of Life on Earth 地球生命的起源</strong>早期地球环境；生命起源假说；RNA 世界</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 8 -->
+          <div class="unit-card">
+            <div class="unit-head">
+              <h3 class="title">Unit 8 · Ecology<small>生态学</small></h3>
+              <span class="pct">10–15%</span>
+            </div>
+            <div class="unit-body">
+              <p class="unit-desc">研究生物与环境之间的相互作用，从个体到生态系统。</p>
+              <ul class="topic-list">
+                <li><strong>8.1 Responses to the Environment 对环境的行为响应</strong>动物行为；趋性、迁徙、生物节律</li>
+                <li><strong>8.2 Energy Flow Through Ecosystems 生态系统能量流动</strong>食物链与食物网；营养级；能量金字塔；10% 法则</li>
+                <li><strong>8.3 Population Ecology 种群生态学</strong>种群增长模型（指数增长、逻辑斯谛增长）；环境容纳量</li>
+                <li><strong>8.4 Effect of Density on Populations 密度对种群的影响</strong>密度依赖因素与非密度依赖因素</li>
+                <li><strong>8.5 Community Ecology 群落生态学</strong>种间关系（竞争、捕食、共生）；生态位；群落结构</li>
+                <li><strong>8.6 Biodiversity 生物多样性</strong>遗传多样性、物种多样性、生态系统多样性；影响生物多样性的因素</li>
+                <li><strong>8.7 Disruptions in Ecosystems 生态系统的干扰</strong>人类活动的影响；入侵物种；栖息地破坏；保护生物学</li>
+              </ul>
+            </div>
           </div>
 
         </div>
+
+      </div>
+
+      <!-- 下方区域 -->
+      <div class="course-bottom">
+
+        <div class="ced-box">
+          <div class="info">
+            <h4>📄 下载 CED</h4>
+            <p>College Board 官方课程与考试说明</p>
+          </div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description.pdf"
+             class="download-btn"
+             target="_blank"
+             rel="noopener">
+            下载
+          </a>
+        </div>
+
+        <div class="option-grid">
+          <a href="bio-past-papers.html" class="option-card">
+            <div class="icon">📄</div>
+            <h3>Past Papers</h3>
+            <p>往年真题试卷</p>
+          </a>
+          <a href="bio-cb-bank.html" class="option-card">
+            <div class="icon">📝</div>
+            <h3>CB 题库</h3>
+            <p>College Board 官方题库</p>
+          </a>
+        </div>
+
       </div>
 
     </div>
