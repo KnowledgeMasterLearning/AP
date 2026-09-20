@@ -6,7 +6,6 @@
   <title>About | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    /* 让 footer 沉底 */
     html, body { height: 100%; }
     body {
       display: flex;
@@ -16,14 +15,13 @@
     }
     .main-content { flex: 1; }
 
-    /* ===== 关于我卡片 ===== */
     .about-card {
       background: #fff;
       border: 1px solid #ede4f7;
       border-radius: 20px;
-      padding: 48px 40px;
+      padding: 48px 44px;
       text-align: center;
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto;
       box-shadow: 0 8px 28px rgba(102,0,153,0.06);
     }
@@ -36,26 +34,36 @@
       border: 4px solid #f3e8ff;
     }
     .about-card h2 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       color: #4a0072;
       margin: 0 0 8px;
     }
     .about-card .title {
       color: #660099;
-      margin-bottom: 22px;
+      margin-bottom: 30px;
       font-size: 1rem;
     }
     .about-card .bio {
-      color: #64748b;
+      color: #475569;
       line-height: 2;
-      margin: 0 auto 30px;
-      max-width: 480px;
+      margin: 0 auto 18px;
+      max-width: 560px;
+      text-align: left;
+      font-size: 0.98rem;
     }
+    .about-card .bio:last-of-type {
+      color: #4a0072;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 24px;
+    }
+
     .contact-list {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
+      margin-top: 32px;
     }
     .contact-list a {
       padding: 10px 24px;
@@ -73,8 +81,8 @@
       border-color: #660099;
     }
 
-    /* ===== 微信弹窗 ===== */
-    #wechatModal {
+    /* Modal (WeChat + Bilibili shared) */
+    #wechatModal, #biliModal {
       display: none;
       position: fixed;
       inset: 0;
@@ -84,7 +92,7 @@
       z-index: 999;
       padding: 20px;
     }
-    #wechatModal.show { display: flex; }
+    #wechatModal.show, #biliModal.show { display: flex; }
     .wechat-box {
       background: #fff;
       padding: 30px 36px;
@@ -138,22 +146,48 @@
         <div class="about-card">
 
           <img class="avatar"
-               src="../images/home-photo.jpg"
-               alt="Avatar"
-               onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=KM&backgroundColor=660099'">
+               src="../images/avatar.jpg"
+               alt="Samuel"
+               onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=Samuel&backgroundColor=660099'">
 
-          <h2>Your Name</h2>
-          <p class="title">AP Teacher · XX School</p>
+          <h2>Samuel</h2>
+          <p class="title">Knowledge Master · Founder</p>
 
           <p class="bio">
-            [Bio placeholder] This section will introduce your teaching
-            experience, philosophy, and the motivation behind this website.
+            Hi, I'm Samuel. Knowledge Master is a study platform I founded.
+            It gathers the AP course outlines, exam focus points, concept summaries,
+            and official CEDs I've organized, plus past AP exams and CB question banks
+            I've been able to collect — all shared for free, so that more students can
+            learn AP with ease.
+          </p>
+
+          <p class="bio">
+            I've taken 15 AP exams, and I can say with confidence — AP is not hard to learn.
+            The content is challenging, the pace is fast, and everything is in English, which
+            does trip up many students. But with the right approach, every problem can be solved.
+            There are two most common issues: first, students can't find past exams or question banks;
+            second, the material is dense and the language barrier makes it hard to keep up,
+            leading to giving up. Both of these can actually be avoided.
+          </p>
+
+          <p class="bio">
+            This is exactly why I founded this platform: to offer one-on-one AP online courses,
+            "spoon-feeding" the concepts to students — adjusting the pace to their absorption,
+            teaching bilingually to ensure understanding, reporting to parents before and after class,
+            and answering questions anytime. Several students have already improved because of this.
+            Passing on what I've learned to more people is itself a meaningful thing.
+          </p>
+
+          <p class="bio">
+            If you have any questions about courses, materials, or study methods,
+            feel free to reach out via the contact options below.
           </p>
 
           <div class="contact-list">
-            <a href="mailto:your@email.com">✉️ Email</a>
+            <a href="mailto:samueldongmail@163.com">✉️ Email</a>
             <a href="#" id="wechatBtn">💬 WeChat</a>
-            <a href="https://space.bilibili.com/你的UID" target="_blank" rel="noopener">📺 Bilibili</a>
+            <a href="https://xhslink.cn/o/9LXZbcTPIWC" target="_blank" rel="noopener">📕 Xiaohongshu</a>
+            <a href="#" id="biliBtn">📺 Bilibili (WIP)</a>
           </div>
 
         </div>
@@ -164,9 +198,20 @@
   <!-- WeChat Modal -->
   <div id="wechatModal">
     <div class="wechat-box">
-      <img src="../images/wechat-qr.png" alt="WeChat QR">
+      <img src="../images/wechat-qr.png" alt="WeChat QR Code">
       <p>Scan to add on WeChat</p>
       <button id="wechatClose">Close</button>
+    </div>
+  </div>
+
+  <!-- Bilibili Modal -->
+  <div id="biliModal">
+    <div class="wechat-box">
+      <p style="font-size:1rem;color:#4a0072;margin:0;line-height:1.9;">
+        📺 Bilibili channel is still being organized<br>
+        Not available yet — stay tuned
+      </p>
+      <button id="biliClose">Got it</button>
     </div>
   </div>
 
@@ -178,23 +223,34 @@
   </footer>
 
   <script>
+    // WeChat
     const wechatBtn = document.getElementById('wechatBtn');
     const wechatModal = document.getElementById('wechatModal');
     const wechatClose = document.getElementById('wechatClose');
-
-    wechatBtn.addEventListener('click', function(e) {
+    wechatBtn.addEventListener('click', e => {
       e.preventDefault();
       wechatModal.classList.add('show');
     });
-
-    wechatClose.addEventListener('click', function() {
+    wechatClose.addEventListener('click', () => {
       wechatModal.classList.remove('show');
     });
+    wechatModal.addEventListener('click', e => {
+      if (e.target === wechatModal) wechatModal.classList.remove('show');
+    });
 
-    wechatModal.addEventListener('click', function(e) {
-      if (e.target === wechatModal) {
-        wechatModal.classList.remove('show');
-      }
+    // Bilibili
+    const biliBtn = document.getElementById('biliBtn');
+    const biliModal = document.getElementById('biliModal');
+    const biliClose = document.getElementById('biliClose');
+    biliBtn.addEventListener('click', e => {
+      e.preventDefault();
+      biliModal.classList.add('show');
+    });
+    biliClose.addEventListener('click', () => {
+      biliModal.classList.remove('show');
+    });
+    biliModal.addEventListener('click', e => {
+      if (e.target === biliModal) biliModal.classList.remove('show');
     });
   </script>
 
