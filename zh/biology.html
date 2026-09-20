@@ -6,310 +6,58 @@
   <title>生物学 | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    /* ===== 上半部：左标题 + 右视频 ===== */
-    .course-top {
-      display: flex;
-      gap: 40px;
-      align-items: stretch;
-      flex-wrap: wrap;
-      padding: 40px 0 0;
-    }
-    .course-left {
-      flex: 1 1 380px;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .course-left .cn {
-      font-size: 3.4rem;
-      font-weight: 800;
-      color: #4a0072;
-      line-height: 1.2;
-      margin: 0;
-      letter-spacing: 2px;
-    }
-    .course-left .en {
-      font-size: 1.6rem;
-      color: #660099;
-      opacity: 0.7;
-      margin: 16px 0 0;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-    .course-right {
-      flex: 1 1 420px;
-      min-width: 300px;
-      display: flex;
-      align-items: center;
-    }
-    .video-box {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
-      border: 3px solid #000;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 1rem;
-      overflow: hidden;
-    }
-    .video-box iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* ===== 课程介绍整体 ===== */
-    .course-desc {
-      margin-top: 72px;
-      background: #faf7fd;
-      border: 1px solid #ede4f7;
-      border-radius: 20px;
-      padding: 48px 44px;
-    }
-    .desc-title {
-      text-align: center;
-      margin-bottom: 36px;
-      padding-bottom: 24px;
-      border-bottom: 1px dashed #e2d4f0;
-    }
-    .desc-title h2 {
-      font-size: 1.9rem;
-      color: #4a0072;
-      margin: 0;
-    }
-    .desc-title p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      margin-top: 8px;
-      letter-spacing: 1px;
-    }
-    .desc-intro {
-      max-width: 760px;
-      margin: 0 auto 40px;
-      text-align: center;
-      color: #64748b;
-      line-height: 2;
-      font-size: 1.02rem;
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 14px;
-      padding: 26px 32px;
-    }
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-left .en { font-size: 1.6rem; color: #660099; opacity: 0.7; margin: 16px 0 0; font-weight: 500; letter-spacing: 1px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
     .desc-intro strong { color: #4a0072; }
-
-    /* 单元占比总览 */
     .units-overview { margin-top: 8px; }
-    .units-overview h3 {
-      font-size: 1.35rem;
-      color: #4a0072;
-      margin-bottom: 20px;
-      padding-left: 14px;
-      border-left: 5px solid #660099;
-    }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
     .weight-list { display: grid; gap: 12px; }
-    .weight-row {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 12px;
-      padding: 14px 20px;
-    }
-    .weight-row .unit-tag {
-      flex-shrink: 0;
-      font-weight: 700;
-      color: #660099;
-      font-size: 0.95rem;
-      min-width: 62px;
-    }
-    .weight-row .unit-name {
-      flex: 1;
-      color: #1e293b;
-      font-size: 0.98rem;
-    }
-    .weight-row .unit-pct {
-      flex-shrink: 0;
-      background: #660099;
-      color: #fff;
-      font-size: 0.82rem;
-      padding: 4px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-    .weight-note {
-      margin-top: 16px;
-      background: #f3e8ff;
-      border-left: 4px solid #660099;
-      border-radius: 0 10px 10px 0;
-      padding: 14px 20px;
-      color: #64748b;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    /* ===== 各单元卡片 ===== */
-    .unit-cards {
-      margin-top: 48px;
-      display: grid;
-      gap: 28px;
-    }
-    .unit-card {
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: box-shadow 0.25s;
-    }
-    .unit-card:hover {
-      box-shadow: 0 12px 32px rgba(102,0,153,0.1);
-    }
-    .unit-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
-      color: #fff;
-      padding: 18px 26px;
-      flex-wrap: wrap;
-    }
-    .unit-head .title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 0;
-      line-height: 1.5;
-    }
-    .unit-head .title small {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 400;
-      opacity: 0.8;
-      margin-top: 2px;
-    }
-    .unit-head .pct {
-      flex-shrink: 0;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 5px 16px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .title small { display: block; font-size: 0.82rem; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
     .unit-body { padding: 24px 26px 28px; }
-    .unit-body .unit-desc {
-      color: #64748b;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding-bottom: 18px;
-      border-bottom: 1px dashed #ede4f7;
-      line-height: 1.8;
-    }
-    .topic-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 14px;
-    }
-    .topic-list li {
-      line-height: 1.8;
-      color: #475569;
-      font-size: 0.94rem;
-      padding-left: 16px;
-      border-left: 3px solid #ede9fe;
-    }
-    .topic-list li strong {
-      color: #4a0072;
-      display: block;
-      margin-bottom: 2px;
-      font-size: 0.96rem;
-    }
-
-    /* ===== 下方区域 ===== */
-    .course-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-      margin-top: 64px;
-    }
-    .ced-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 24px 28px;
-      flex-wrap: wrap;
-      gap: 16px;
-      transition: all 0.2s;
-    }
-    .ced-box:hover {
-      border-color: #660099;
-      box-shadow: 0 6px 18px rgba(102,0,153,0.1);
-    }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
     .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
     .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
-
-    .option-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-    }
-    .option-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 36px 28px;
-      text-align: center;
-      transition: all 0.3s;
-      background: #fff;
-    }
-    .option-card:hover {
-      border-color: #660099;
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(102,0,153,0.15);
-    }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
     .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
     .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
     .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
-
-    .download-btn {
-      flex-shrink: 0;
-      padding: 10px 24px;
-      background: #660099;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.92rem;
-      transition: background 0.2s;
-    }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
     .download-btn:hover { background: #4a0072; }
-
-    @media (max-width: 700px) {
-      .course-left .cn { font-size: 2.4rem; }
-      .course-left .en { font-size: 1.2rem; }
-    }
-    @media (max-width: 600px) {
-      .course-desc { padding: 28px 20px; }
-      .option-grid { grid-template-columns: 1fr; }
-      .unit-head { flex-direction: column; align-items: flex-start; }
-      .weight-row { flex-wrap: wrap; }
-    }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } .course-left .en { font-size: 1.2rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
   </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -324,8 +72,6 @@
 
   <section class="section">
     <div class="container">
-
-      <!-- 上半部：左标题 + 右视频 -->
       <div class="course-top">
         <div class="course-left">
           <h1 class="cn">生物学</h1>
@@ -333,7 +79,7 @@
         </div>
         <div class="course-right">
           <div class="video-box">
-            视频占位
+            <img src="../images/bio-pic.png" alt="生物学">
             <!--
             <iframe src="https://player.bilibili.com/player.html?bvid=你的BV号&p=1"
                     scrolling="no" border="0" frameborder="no"
@@ -343,80 +89,36 @@
         </div>
       </div>
 
-      <!-- ===== 课程介绍 ===== -->
       <div class="course-desc">
-
         <div class="desc-title">
           <h2>课程介绍</h2>
           <p>AP BIOLOGY · COURSE OVERVIEW</p>
         </div>
-
         <div class="desc-intro">
           AP 生物学课程共分为 <strong>8 个单元</strong>，围绕四个核心概念展开：
           <strong>进化</strong>、<strong>能量与物质</strong>、
           <strong>信息存储与传递</strong>、<strong>系统相互作用</strong>。
         </div>
-
-        <!-- 单元占比总览 -->
         <div class="units-overview">
           <h3>单元分布与考试占比</h3>
           <div class="weight-list">
-            <div class="weight-row">
-              <span class="unit-tag">Unit 1</span>
-              <span class="unit-name">Chemistry of Life 生命的化学基础</span>
-              <span class="unit-pct">8–11%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 2</span>
-              <span class="unit-name">Cells 细胞</span>
-              <span class="unit-pct">10–13%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 3</span>
-              <span class="unit-name">Cellular Energetics 细胞能量学</span>
-              <span class="unit-pct">12–16%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 4</span>
-              <span class="unit-name">Cell Communication and Cell Cycle 细胞通讯与细胞周期</span>
-              <span class="unit-pct">10–15%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 5</span>
-              <span class="unit-name">Heredity 遗传</span>
-              <span class="unit-pct">8–11%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 6</span>
-              <span class="unit-name">Gene Expression and Regulation 基因表达与调控</span>
-              <span class="unit-pct">12–16%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 7</span>
-              <span class="unit-name">Natural Selection 自然选择</span>
-              <span class="unit-pct">13–20%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 8</span>
-              <span class="unit-name">Ecology 生态学</span>
-              <span class="unit-pct">10–15%</span>
-            </div>
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">Chemistry of Life 生命的化学基础</span><span class="unit-pct">8–11%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">Cells 细胞</span><span class="unit-pct">10–13%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">Cellular Energetics 细胞能量学</span><span class="unit-pct">12–16%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Cell Communication and Cell Cycle 细胞通讯与细胞周期</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Heredity 遗传</span><span class="unit-pct">8–11%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 6</span><span class="unit-name">Gene Expression and Regulation 基因表达与调控</span><span class="unit-pct">12–16%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 7</span><span class="unit-name">Natural Selection 自然选择</span><span class="unit-pct">13–20%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 8</span><span class="unit-name">Ecology 生态学</span><span class="unit-pct">10–15%</span></div>
           </div>
           <div class="weight-note">
             <strong>说明</strong>：Unit 7（自然选择）占比最高，是整门课程的核心主线；
             Unit 3 和 Unit 6 并列第二，均为重点单元。
           </div>
         </div>
-
-        <!-- 各单元卡片 -->
         <div class="unit-cards">
-
-          <!-- Unit 1 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 1 · Chemistry of Life<small>生命的化学基础</small></h3>
-              <span class="pct">8–11%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 1 · Chemistry of Life<small>生命的化学基础</small></h3><span class="pct">8–11%</span></div>
             <div class="unit-body">
               <p class="unit-desc">建立生物学所需的化学基础，重点理解水、元素和生物大分子的结构与功能。</p>
               <ul class="topic-list">
@@ -430,13 +132,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 2 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 2 · Cells<small>细胞</small></h3>
-              <span class="pct">10–13%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 2 · Cells<small>细胞</small></h3><span class="pct">10–13%</span></div>
             <div class="unit-body">
               <p class="unit-desc">聚焦细胞结构与功能，重点理解膜的结构与运输机制。</p>
               <ul class="topic-list">
@@ -453,13 +150,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 3 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 3 · Cellular Energetics<small>细胞能量学</small></h3>
-              <span class="pct">12–16%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 3 · Cellular Energetics<small>细胞能量学</small></h3><span class="pct">12–16%</span></div>
             <div class="unit-body">
               <p class="unit-desc">研究细胞如何获取和利用能量，核心是酶、光合作用和细胞呼吸。</p>
               <ul class="topic-list">
@@ -471,13 +163,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 4 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 4 · Cell Communication and Cell Cycle<small>细胞通讯与细胞周期</small></h3>
-              <span class="pct">10–15%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 4 · Cell Communication and Cell Cycle<small>细胞通讯与细胞周期</small></h3><span class="pct">10–15%</span></div>
             <div class="unit-body">
               <p class="unit-desc">研究细胞如何接收和响应信号，以及细胞如何分裂和调控周期。</p>
               <ul class="topic-list">
@@ -490,13 +177,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 5 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 5 · Heredity<small>遗传</small></h3>
-              <span class="pct">8–11%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 5 · Heredity<small>遗传</small></h3><span class="pct">8–11%</span></div>
             <div class="unit-body">
               <p class="unit-desc">研究遗传信息的传递规律，从减数分裂到孟德尔遗传。</p>
               <ul class="topic-list">
@@ -508,13 +190,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 6 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 6 · Gene Expression and Regulation<small>基因表达与调控</small></h3>
-              <span class="pct">12–16%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 6 · Gene Expression and Regulation<small>基因表达与调控</small></h3><span class="pct">12–16%</span></div>
             <div class="unit-body">
               <p class="unit-desc">深入分子层面，研究 DNA 如何复制、转录、翻译并调控。</p>
               <ul class="topic-list">
@@ -529,13 +206,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 7 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 7 · Natural Selection<small>自然选择</small></h3>
-              <span class="pct">13–20%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 7 · Natural Selection<small>自然选择</small></h3><span class="pct">13–20%</span></div>
             <div class="unit-body">
               <p class="unit-desc">AP 生物学的核心主线，研究进化的机制与证据。</p>
               <ul class="topic-list">
@@ -554,13 +226,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 8 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 8 · Ecology<small>生态学</small></h3>
-              <span class="pct">10–15%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 8 · Ecology<small>生态学</small></h3><span class="pct">10–15%</span></div>
             <div class="unit-body">
               <p class="unit-desc">研究生物与环境之间的相互作用，从个体到生态系统。</p>
               <ul class="topic-list">
@@ -574,42 +241,19 @@
               </ul>
             </div>
           </div>
-
         </div>
-
       </div>
 
-      <!-- 下方区域 -->
       <div class="course-bottom">
-
         <div class="ced-box">
-          <div class="info">
-            <h4>📄 下载 CED</h4>
-            <p>College Board 官方课程与考试说明</p>
-          </div>
-          <a href="https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description.pdf"
-             class="download-btn"
-             target="_blank"
-             rel="noopener">
-            下载
-          </a>
+          <div class="info"><h4>📄 下载 CED</h4><p>College Board 官方课程与考试说明</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">下载</a>
         </div>
-
         <div class="option-grid">
-          <a href="bio-past-papers.html" class="option-card">
-            <div class="icon">📄</div>
-            <h3>Past Papers</h3>
-            <p>往年真题试卷</p>
-          </a>
-          <a href="bio-cb-bank.html" class="option-card">
-            <div class="icon">📝</div>
-            <h3>CB 题库</h3>
-            <p>College Board 官方题库</p>
-          </a>
+          <a href="bio-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>往年真题试卷</p></a>
+          <a href="bio-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB 题库</h3><p>College Board 官方题库</p></a>
         </div>
-
       </div>
-
     </div>
   </section>
 
@@ -619,6 +263,5 @@
       本站内容免费供学习使用，未经许可不得转载或商用。
     </div>
   </footer>
-
 </body>
 </html>
