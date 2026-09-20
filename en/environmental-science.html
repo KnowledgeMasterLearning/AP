@@ -5,9 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Environmental Science | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
+    .desc-intro strong { color: #4a0072; }
+    .units-overview { margin-top: 8px; }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
+    .weight-list { display: grid; gap: 12px; }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+    .unit-body { padding: 24px 26px 28px; }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
+    .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
+    .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
+    .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
+    .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
+    .download-btn:hover { background: #4a0072; }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
+  </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -15,52 +63,235 @@
         <a href="index.html">Home</a>
         <a href="courses.html" class="active">Courses</a>
         <a href="about.html">About</a>
-        <a href="../zh/index.html" class="lang-switch">中文</a>
+        <a href="../zh/environmental-science.html" class="lang-switch">中文</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>Environmental Science</h1>
-      <p>AP Environmental Science</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
-      <div class="course-intro">
-        [Course introduction placeholder] This section will introduce the
-        content, exam focus, and study tips for AP Environmental Science.
+      <div class="course-top">
+        <div class="course-left">
+          <h1 class="cn">Environmental Science</h1>
+        </div>
+        <div class="course-right">
+          <div class="video-box">
+            <img src="../images/ES-pic.png" alt="Environmental Science">
+          </div>
+        </div>
       </div>
-      <div class="download-section">
-        <h2>📥 Downloads</h2>
-        <div class="download-list">
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Notes (PDF)</h4>
-              <p>Course notes and key concepts</p>
-            </div>
-            <a href="../files/env-notes.pdf" class="download-btn" download>Download</a>
+      <div class="course-desc">
+        <div class="desc-title">
+          <h2>Course Overview</h2>
+          <p>AP ENVIRONMENTAL SCIENCE · COURSE OVERVIEW</p>
+        </div>
+        <div class="desc-intro">
+          AP Environmental Science is divided into <strong>9 units</strong>, built around ecosystems,
+          biodiversity, populations, earth systems and resources, energy consumption and pollution,
+          with a focus on the interactions between the natural environment and human activity.
+        </div>
+        <div class="units-overview">
+          <h3>Units and Exam Weighting</h3>
+          <div class="weight-list">
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">The Living World: Ecosystems</span><span class="unit-pct">6–8%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">The Living World: Biodiversity</span><span class="unit-pct">6–8%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">Populations</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Earth Systems and Resources</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Land and Water Use</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 6</span><span class="unit-name">Energy Resources and Consumption</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 7</span><span class="unit-name">Atmospheric Pollution</span><span class="unit-pct">7–10%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 8</span><span class="unit-name">Aquatic and Terrestrial Pollution</span><span class="unit-pct">7–10%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 9</span><span class="unit-name">Global Change</span><span class="unit-pct">15–20%</span></div>
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Past Papers (PDF)</h4>
-              <p>Includes past exam papers</p>
-            </div>
-            <a href="../files/env-past-papers.pdf" class="download-btn" download>Download</a>
+          <div class="weight-note">
+            <strong>Note</strong>: Unit 9 (Global Change) carries the highest weight and serves as the course's capstone.
+            Units 3, 4, 5, and 6 are tied for second — all key units.
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 CB Question Bank (PDF)</h4>
-              <p>College Board official question bank</p>
+        </div>
+        <div class="unit-cards">
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 1 · The Living World: Ecosystems</h3><span class="pct">6–8%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 1.</p>
+              <ul class="topic-list">
+                <li><strong>1.1 Introduction to Ecosystems</strong>Components of ecosystems; producers, consumers, decomposers</li>
+                <li><strong>1.2 Terrestrial Biomes</strong>Characteristics and distribution of major biomes</li>
+                <li><strong>1.3 Aquatic Biomes</strong>Freshwater and marine ecosystems</li>
+                <li><strong>1.4 The Carbon Cycle</strong>Pathways of carbon through the biosphere</li>
+                <li><strong>1.5 The Nitrogen Cycle</strong>Nitrogen fixation, nitrification, denitrification</li>
+                <li><strong>1.6 The Phosphorus Cycle</strong>Phosphorus cycling in ecosystems</li>
+                <li><strong>1.7 The Hydrologic Cycle</strong>Evaporation, condensation, precipitation, runoff</li>
+                <li><strong>1.8 Primary Productivity</strong>Net primary productivity; factors affecting productivity</li>
+                <li><strong>1.9 Trophic Levels</strong>Energy pyramid; 10% rule</li>
+                <li><strong>1.10 Energy Flow and the 10% Rule</strong>Energy transfer between trophic levels</li>
+                <li><strong>1.11 Food Chains and Food Webs</strong>Predator-prey relationships; food web structure</li>
+              </ul>
             </div>
-            <a href="../files/env-cb-bank.pdf" class="download-btn" download>Download</a>
           </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 2 · The Living World: Biodiversity</h3><span class="pct">6–8%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 2.</p>
+              <ul class="topic-list">
+                <li><strong>2.1 Introduction to Biodiversity</strong>Genetic, species, and ecosystem diversity</li>
+                <li><strong>2.2 Ecosystem Services</strong>Provisioning, regulating, supporting, cultural services</li>
+                <li><strong>2.3 Island Biogeography</strong>Effects of area and isolation on species richness</li>
+                <li><strong>2.4 Ecological Tolerance</strong>Range of environmental conditions a species can tolerate</li>
+                <li><strong>2.5 Natural Disruptions to Ecosystems</strong>Fires, floods, storms, and other disturbances</li>
+                <li><strong>2.6 Adaptations</strong>Morphological, physiological, behavioral adaptations</li>
+                <li><strong>2.7 Ecological Succession</strong>Primary and secondary succession</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 3 · Populations</h3><span class="pct">10–15%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 3.</p>
+              <ul class="topic-list">
+                <li><strong>3.1 Specialist vs. Generalist Species</strong>Niche breadth and survival strategy</li>
+                <li><strong>3.2 K-Selected vs. R-Selected Species</strong>Reproductive strategies and population traits</li>
+                <li><strong>3.3 Survivorship Curves</strong>Type I, II, III survivorship curves</li>
+                <li><strong>3.4 Carrying Capacity</strong>K value; logistic growth</li>
+                <li><strong>3.5 Population Growth and Resource Availability</strong>Exponential growth and resource limits</li>
+                <li><strong>3.6 Age Structure Diagrams</strong>Reading population pyramids</li>
+                <li><strong>3.7 Total Fertility Rate</strong>TFR and population growth</li>
+                <li><strong>3.8 Human Population Dynamics</strong>Demographic transition model</li>
+                <li><strong>3.9 Demographic Transition</strong>Four stages and characteristics</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 4 · Earth Systems and Resources</h3><span class="pct">10–15%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 4.</p>
+              <ul class="topic-list">
+                <li><strong>4.1 Plate Tectonics</strong>Plate boundaries; earthquakes and volcanoes</li>
+                <li><strong>4.2 Soil Formation and Erosion</strong>Soil profile; erosion types</li>
+                <li><strong>4.3 Soil Composition and Properties</strong>Texture, porosity, pH, nutrients</li>
+                <li><strong>4.4 Earth's Atmosphere</strong>Layers of the atmosphere; greenhouse effect</li>
+                <li><strong>4.5 Global Wind Patterns</strong>Trade winds, westerlies, polar easterlies</li>
+                <li><strong>4.6 Watersheds</strong>Drainage divides and flow paths</li>
+                <li><strong>4.7 Solar Radiation and Earth's Seasons</strong>Axial tilt and seasonal changes</li>
+                <li><strong>4.8 Earth's Geography and Climate</strong>Effects of latitude and topography on climate</li>
+                <li><strong>4.9 El Niño and La Niña</strong>ENSO effects on global climate</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 5 · Land and Water Use</h3><span class="pct">10–15%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 5.</p>
+              <ul class="topic-list">
+                <li><strong>5.1 The Tragedy of the Commons</strong>Common resources and overuse</li>
+                <li><strong>5.2 Clearcutting</strong>Environmental impacts of deforestation</li>
+                <li><strong>5.3 The Green Revolution</strong>Agricultural technology and its impacts</li>
+                <li><strong>5.4 Impacts of Agricultural Practices</strong>Soil degradation, water pollution</li>
+                <li><strong>5.5 Irrigation Methods</strong>Flood, drip, and other irrigation types</li>
+                <li><strong>5.6 Pest Control Methods</strong>Pesticides and biological control</li>
+                <li><strong>5.7 Meat Production Methods</strong>CAFOs and environmental impacts</li>
+                <li><strong>5.8 Impacts of Overfishing</strong>Fishery depletion</li>
+                <li><strong>5.9 Impacts of Mining</strong>Surface and subsurface mining</li>
+                <li><strong>5.10 Impacts of Urbanization</strong>Heat island effect, impervious surfaces</li>
+                <li><strong>5.11 Ecological Footprints</strong>Measuring resource consumption</li>
+                <li><strong>5.12 Introduction to Sustainability</strong>Principles of sustainable development</li>
+                <li><strong>5.13 Methods to Reduce Urban Runoff</strong>Green infrastructure</li>
+                <li><strong>5.14 Integrated Pest Management</strong>IPM strategies</li>
+                <li><strong>5.15 Sustainable Agriculture</strong>Organic farming, crop rotation</li>
+                <li><strong>5.16 Aquaculture</strong>Benefits and problems</li>
+                <li><strong>5.17 Sustainable Forestry</strong>Selective logging, reforestation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 6 · Energy Resources and Consumption</h3><span class="pct">10–15%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 6.</p>
+              <ul class="topic-list">
+                <li><strong>6.1 Renewable and Nonrenewable Resources</strong>Resource classification</li>
+                <li><strong>6.2 Global Energy Consumption</strong>Energy mix and trends</li>
+                <li><strong>6.3 Fuel Types and Uses</strong>Fossil fuels, nuclear, renewables</li>
+                <li><strong>6.4 Distribution of Natural Energy Resources</strong>Uneven geographic distribution</li>
+                <li><strong>6.5 Fossil Fuels</strong>Formation and use of coal, oil, natural gas</li>
+                <li><strong>6.6 Nuclear Power</strong>Nuclear fission; waste issues</li>
+                <li><strong>6.7 Energy from Biomass</strong>Biofuels</li>
+                <li><strong>6.8 Solar Energy</strong>Photovoltaic and solar thermal</li>
+                <li><strong>6.9 Hydroelectric Power</strong>Environmental impacts of dams</li>
+                <li><strong>6.10 Geothermal Energy</strong>Geothermal power and heating</li>
+                <li><strong>6.11 Hydrogen Fuel Cell</strong>Principles and applications</li>
+                <li><strong>6.12 Wind Energy</strong>Wind power</li>
+                <li><strong>6.13 Energy Conservation</strong>Efficiency and reducing waste</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 7 · Atmospheric Pollution</h3><span class="pct">7–10%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 7.</p>
+              <ul class="topic-list">
+                <li><strong>7.1 Introduction to Air Pollution</strong>Major pollutants and sources</li>
+                <li><strong>7.2 Photochemical Smog</strong>Formation and impacts</li>
+                <li><strong>7.3 Thermal Inversion</strong>Inversion and pollutant accumulation</li>
+                <li><strong>7.4 Atmospheric CO₂ and Particulates</strong>Sources and effects</li>
+                <li><strong>7.5 Indoor Air Pollutants</strong>Formaldehyde, radon, asbestos</li>
+                <li><strong>7.6 Reduction of Air Pollutants</strong>Technological and management measures</li>
+                <li><strong>7.7 Acid Rain</strong>Causes and effects</li>
+                <li><strong>7.8 Noise Pollution</strong>Sources and health impacts</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 8 · Aquatic and Terrestrial Pollution</h3><span class="pct">7–10%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 8.</p>
+              <ul class="topic-list">
+                <li><strong>8.1 Sources of Pollution</strong>Point and nonpoint sources</li>
+                <li><strong>8.2 Human Impacts on Ecosystems</strong>Habitat destruction and species loss</li>
+                <li><strong>8.3 Endocrine Disruptors</strong>Effects on organisms</li>
+                <li><strong>8.4 Human Impacts on Wetlands and Mangroves</strong>Ecological functions and protection</li>
+                <li><strong>8.5 Eutrophication</strong>Causes and consequences</li>
+                <li><strong>8.6 Thermal Pollution</strong>Effects on aquatic ecosystems</li>
+                <li><strong>8.7 Persistent Organic Pollutants</strong>Bioaccumulation and biomagnification</li>
+                <li><strong>8.8 Bioaccumulation and Biomagnification</strong>Concentration in food chains</li>
+                <li><strong>8.9 Solid Waste Disposal</strong>Landfills, incineration, recycling</li>
+                <li><strong>8.10 Waste Reduction Methods</strong>Recycling and reduction</li>
+                <li><strong>8.11 Sewage Treatment</strong>Primary, secondary, tertiary treatment</li>
+                <li><strong>8.12 Lethal Dose 50% (LD50)</strong>Measuring toxicity</li>
+                <li><strong>8.13 Dose-Response Curve</strong>Toxicology fundamentals</li>
+                <li><strong>8.14 Pollution and Human Health</strong>Health effects of pollutants</li>
+                <li><strong>8.15 Pathogens and Infectious Diseases</strong>Waterborne and vector-borne diseases</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 9 · Global Change</h3><span class="pct">15–20%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">[Course intro placeholder] Core content of AP Environmental Science Unit 9.</p>
+              <ul class="topic-list">
+                <li><strong>9.1 Stratospheric Ozone Depletion</strong>Ozone hole and CFCs</li>
+                <li><strong>9.2 Reducing Ozone Depletion</strong>Montreal Protocol</li>
+                <li><strong>9.3 The Greenhouse Effect</strong>Greenhouse gases and mechanisms</li>
+                <li><strong>9.4 Increases in Greenhouse Gases</strong>Human activities</li>
+                <li><strong>9.5 Global Climate Change</strong>Observed evidence and impacts</li>
+                <li><strong>9.6 Ocean Warming and Acidification</strong>Effects of CO₂ dissolution</li>
+                <li><strong>9.7 Invasive Species</strong>Ecological impacts and control</li>
+                <li><strong>9.8 Endangered Species</strong>Conservation strategies</li>
+                <li><strong>9.9 Human Impact on Biodiversity</strong>Habitat loss, overexploitation</li>
+                <li><strong>9.10 Sustainability and Human Development</strong>Integrated perspective</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="course-bottom">
+        <div class="ced-box">
+          <div class="info"><h4>📄 Download CED</h4><p>College Board Course and Exam Description</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-environmental-science-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+        <div class="option-grid">
+          <a href="env-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>Past exam papers</p></a>
+          <a href="env-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB Question Bank</h3><p>College Board question bank</p></a>
         </div>
       </div>
     </div>
@@ -72,6 +303,5 @@
       Content is free for learning use. Reproduction or commercial use is prohibited.
     </div>
   </footer>
-
 </body>
 </html>
