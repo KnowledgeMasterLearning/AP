@@ -5,65 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-
-  <header class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">Knowledge Master</a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="about.html" class="active">About</a>
-        <a href="../zh/index.html" class="lang-switch">中文</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="section">
-    <div class="container">
-      <div class="about-card">
-
-        <img class="avatar"
-             src="https://api.dicebear.com/7.x/initials/svg?seed=KM&backgroundColor=660099"
-             alt="Avatar">
-
-        <h2>Your Name</h2>
-        <p class="title">AP Teacher · XX School</p>
-
-        <p class="bio">
-          [Bio placeholder] This section will introduce your teaching
-          experience, philosophy, and the motivation behind this website.
-        </p>
-
-        <div class="contact-list">
-          <a href="mailto:your@email.com">✉️ Email</a>
-          <a href="#" id="wechatBtn">💬 WeChat</a>
-          <a href="https://space.bilibili.com/457613168" target="_blank" rel="noopener">📺 Bilibili</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WeChat QR Modal ===== -->
-  <div id="wechatModal">
-    <div class="wechat-box">
-      <img src="../images/wechat-qr.png" alt="WeChat QR Code">
-      <p>Scan to add on WeChat</p>
-      <button id="wechatClose">Close</button>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      © 2025 Knowledge Master · All rights reserved.<br>
-      Content is free for learning use. Reproduction or commercial use is prohibited.
-    </div>
-  </footer>
-
-  <!-- ===== Modal Styles ===== -->
   <style>
+    /* 让 footer 沉底 */
+    html, body { height: 100%; }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .main-content { flex: 1; }
+
+    /* ===== 关于我卡片 ===== */
+    .about-card {
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+      box-shadow: 0 8px 28px rgba(102,0,153,0.06);
+    }
+    .about-card .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #f3e8ff;
+    }
+    .about-card h2 {
+      font-size: 1.6rem;
+      color: #4a0072;
+      margin: 0 0 8px;
+    }
+    .about-card .title {
+      color: #660099;
+      margin-bottom: 22px;
+      font-size: 1rem;
+    }
+    .about-card .bio {
+      color: #64748b;
+      line-height: 2;
+      margin: 0 auto 30px;
+      max-width: 480px;
+    }
+    .contact-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contact-list a {
+      padding: 10px 24px;
+      background: #f3e8ff;
+      color: #4a0072;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+      border: 1px solid #e9d5ff;
+    }
+    .contact-list a:hover {
+      background: #660099;
+      color: #fff;
+      border-color: #660099;
+    }
+
+    /* ===== 微信弹窗 ===== */
     #wechatModal {
       display: none;
       position: fixed;
@@ -74,9 +84,7 @@
       z-index: 999;
       padding: 20px;
     }
-    #wechatModal.show {
-      display: flex;
-    }
+    #wechatModal.show { display: flex; }
     .wechat-box {
       background: #fff;
       padding: 30px 36px;
@@ -107,12 +115,68 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .wechat-box button:hover {
-      background: #4a0072;
-    }
+    .wechat-box button:hover { background: #4a0072; }
   </style>
+</head>
+<body>
 
-  <!-- ===== Modal Script ===== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Knowledge Master</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="about.html" class="active">About</a>
+        <a href="../zh/about.html" class="lang-switch">中文</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <section class="section">
+      <div class="container">
+        <div class="about-card">
+
+          <img class="avatar"
+               src="../images/home-photo.jpg"
+               alt="Avatar"
+               onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=KM&backgroundColor=660099'">
+
+          <h2>Your Name</h2>
+          <p class="title">AP Teacher · XX School</p>
+
+          <p class="bio">
+            [Bio placeholder] This section will introduce your teaching
+            experience, philosophy, and the motivation behind this website.
+          </p>
+
+          <div class="contact-list">
+            <a href="mailto:your@email.com">✉️ Email</a>
+            <a href="#" id="wechatBtn">💬 WeChat</a>
+            <a href="https://space.bilibili.com/你的UID" target="_blank" rel="noopener">📺 Bilibili</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- WeChat Modal -->
+  <div id="wechatModal">
+    <div class="wechat-box">
+      <img src="../images/wechat-qr.png" alt="WeChat QR">
+      <p>Scan to add on WeChat</p>
+      <button id="wechatClose">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      © 2025 Knowledge Master · All rights reserved.<br>
+      Content is free for learning use. Reproduction or commercial use is prohibited.
+    </div>
+  </footer>
+
   <script>
     const wechatBtn = document.getElementById('wechatBtn');
     const wechatModal = document.getElementById('wechatModal');
