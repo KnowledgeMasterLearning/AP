@@ -5,9 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Psychology | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
+    .desc-intro strong { color: #4a0072; }
+    .units-overview { margin-top: 8px; }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
+    .weight-list { display: grid; gap: 12px; }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+    .unit-body { padding: 24px 26px 28px; }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
+    .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
+    .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
+    .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
+    .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
+    .download-btn:hover { background: #4a0072; }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
+  </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -15,52 +63,139 @@
         <a href="index.html">Home</a>
         <a href="courses.html" class="active">Courses</a>
         <a href="about.html">About</a>
-        <a href="../zh/index.html" class="lang-switch">中文</a>
+        <a href="../zh/psychology.html" class="lang-switch">中文</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>Psychology</h1>
-      <p>AP Psychology</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
-      <div class="course-intro">
-        [Course introduction placeholder] This section will introduce the
-        content, exam focus, and study tips for AP Psychology.
+      <div class="course-top">
+        <div class="course-left">
+          <h1 class="cn">Psychology</h1>
+        </div>
+        <div class="course-right">
+          <div class="video-box">
+            <img src="../images/psycho-pic.png" alt="Psychology">
+          </div>
+        </div>
       </div>
-      <div class="download-section">
-        <h2>📥 Downloads</h2>
-        <div class="download-list">
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Notes (PDF)</h4>
-              <p>Course notes and key concepts</p>
-            </div>
-            <a href="../files/psych-notes.pdf" class="download-btn" download>Download</a>
+      <div class="course-desc">
+        <div class="desc-title">
+          <h2>Course Overview</h2>
+          <p>AP PSYCHOLOGY · COURSE OVERVIEW</p>
+        </div>
+        <div class="desc-intro">
+          AP Psychology is divided into <strong>5 units</strong>, built around psychology as a science:
+          <strong>Biological Bases of Behavior</strong>, <strong>Cognition</strong>,
+          <strong>Development and Learning</strong>,
+          <strong>Social Psychology and Personality</strong>,
+          <strong>Mental and Physical Health</strong>. The course emphasizes scientific
+          methodology, critical thinking, and a systematic understanding of behavior
+          and mental processes.
+        </div>
+        <div class="units-overview">
+          <h3>Units and Exam Weighting</h3>
+          <div class="weight-list">
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">Biological Bases of Behavior</span><span class="unit-pct">15–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">Cognition</span><span class="unit-pct">15–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">Development and Learning</span><span class="unit-pct">15–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Social Psychology and Personality</span><span class="unit-pct">15–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Mental and Physical Health</span><span class="unit-pct">15–25%</span></div>
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Past Papers (PDF)</h4>
-              <p>Includes past exam papers</p>
-            </div>
-            <a href="../files/psych-past-papers.pdf" class="download-btn" download>Download</a>
+          <div class="weight-note">
+            <strong>Note</strong>: All five units carry <strong>equal weight</strong> (15–25% each).
+            The exam doesn't favor any one unit, so every unit must be mastered systematically.
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 CB Question Bank (PDF)</h4>
-              <p>College Board official question bank</p>
+        </div>
+        <div class="unit-cards">
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 1 · Biological Bases of Behavior</h3><span class="pct">15–25%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Builds the biological foundation of psychology — the starting point for understanding all behavior and mental processes.</p>
+              <ul class="topic-list">
+                <li><strong>1.1 Interaction of Heredity and Environment</strong>Twin and adoption studies; heritability; nature vs. nurture</li>
+                <li><strong>1.2 Overview of the Nervous System</strong>CNS and PNS; somatic and autonomic nervous systems; sympathetic and parasympathetic</li>
+                <li><strong>1.3 The Neuron and Neural Firing</strong>Neuron structure; action potential; all-or-none law; refractory period; neurotransmitters; psychoactive drugs</li>
+                <li><strong>1.4 The Brain</strong>Brainstem, cerebellum, limbic system, cerebral cortex; four lobes; Broca's and Wernicke's areas; split-brain research; plasticity; brain imaging</li>
+                <li><strong>1.5 Sleep</strong>Circadian rhythms; sleep stages; REM sleep; dream theories; sleep disorders</li>
+                <li><strong>1.6 Sensation</strong>Sensory thresholds; visual and auditory systems; chemical senses; touch; pain; vestibular and kinesthetic senses</li>
+              </ul>
             </div>
-            <a href="../files/psych-cb-bank.pdf" class="download-btn" download>Download</a>
           </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 2 · Cognition</h3><span class="pct">15–25%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Focuses on how humans acquire, process, store, and retrieve information.</p>
+              <ul class="topic-list">
+                <li><strong>2.1 Perception</strong>Bottom-up vs. top-down processing; Gestalt principles; selective attention; depth perception; perceptual constancy; illusions</li>
+                <li><strong>2.2 Thinking, Problem-Solving, Judgments, and Decision-Making</strong>Concepts and prototypes; schemas; algorithms vs. heuristics; representative and availability heuristics; framing; sunk-cost fallacy</li>
+                <li><strong>2.3 Introduction to Memory</strong>Explicit vs. implicit; episodic vs. semantic; procedural; working memory; multi-store model; levels of processing</li>
+                <li><strong>2.4 Encoding Memories</strong>Encoding types; mnemonics; chunking; spacing effect; serial position effect</li>
+                <li><strong>2.5 Storing Memories</strong>Sensory, short-term, long-term memory; maintenance vs. elaborative rehearsal; autobiographical memory; memory disorders</li>
+                <li><strong>2.6 Retrieving Memories</strong>Recall vs. recognition; context-dependent memory; mood-congruent memory; state-dependent memory; retrieval practice and testing effect</li>
+                <li><strong>2.7 Forgetting and Other Memory Challenges</strong>Forgetting curve; encoding failure; proactive and retroactive interference; tip-of-the-tongue; repression; misinformation effect; source amnesia</li>
+                <li><strong>2.8 Intelligence and Achievement</strong>Theories of intelligence; intelligence tests; reliability and validity; heredity and environment</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 3 · Development and Learning</h3><span class="pct">15–25%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Explores human development across the lifespan and systematically introduces core theories of learning.</p>
+              <ul class="topic-list">
+                <li><strong>3.1 Themes and Methods</strong>Stability and change; nature and nurture; continuity and stages; cross-sectional vs. longitudinal studies</li>
+                <li><strong>3.2 Physical Development</strong>Prenatal development; teratogens; infant reflexes; visual cliff; puberty; physical changes in adulthood</li>
+                <li><strong>3.3 Gender and Sexual Orientation</strong>Sex vs. gender; gender socialization; gender identity; gender schema theory; sexual orientation</li>
+                <li><strong>3.4 Cognitive Development</strong>Piaget's four stages; schemas; assimilation and accommodation; Vygotsky's sociocultural theory; crystallized vs. fluid intelligence</li>
+                <li><strong>3.5 Communication and Language Development</strong>Language structure (phonemes, morphemes, semantics, grammar); language stages; overgeneralization</li>
+                <li><strong>3.6 Social-Emotional Development</strong>Ecological systems theory; parenting styles; attachment types; Erikson's eight stages; Marcia's identity statuses</li>
+                <li><strong>3.7 Classical Conditioning</strong>Pavlov's experiments; unconditioned and conditioned stimuli/responses; acquisition, extinction, spontaneous recovery; generalization and discrimination; taste aversion</li>
+                <li><strong>3.8 Operant Conditioning</strong>Law of effect; positive/negative reinforcement and punishment; shaping; schedules of reinforcement; learned helplessness</li>
+                <li><strong>3.9 Social, Cognitive, and Neurological Factors</strong>Observational learning; Bandura's Bobo doll; insight learning; latent learning; cognitive maps</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 4 · Social Psychology and Personality</h3><span class="pct">15–25%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Explores how individuals think about, influence, and relate to others, and how personality forms and is assessed.</p>
+              <ul class="topic-list">
+                <li><strong>4.1 Attribution Theory and Person Perception</strong>Attribution theory; fundamental attribution error; actor-observer bias; self-serving bias; locus of control; self-fulfilling prophecy; social comparison; mere exposure effect</li>
+                <li><strong>4.2 Attitude Formation and Attitude Change</strong>Stereotypes; implicit attitudes; prejudice and discrimination; belief perseverance; cognitive dissonance</li>
+                <li><strong>4.3 Psychology of Social Situations</strong>Social norms; normative and informational influence; central and peripheral routes to persuasion; conformity; obedience; group polarization; groupthink; bystander effect; altruism</li>
+                <li><strong>4.4 Psychodynamic and Humanistic Theories</strong>Freud's structural model (id, ego, superego); defense mechanisms; projective tests; humanism; self-actualization; unconditional positive regard</li>
+                <li><strong>4.5 Social-Cognitive and Trait Theories</strong>Reciprocal determinism; self-efficacy; Big Five; factor analysis</li>
+                <li><strong>4.6 Motivation</strong>Drive-reduction theory; arousal theory; Maslow's hierarchy; intrinsic vs. extrinsic motivation</li>
+                <li><strong>4.7 Emotion</strong>James-Lange; Cannon-Bard; Schachter-Singer two-factor theory; facial feedback hypothesis</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 5 · Mental and Physical Health</h3><span class="pct">15–25%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Focuses on defining mental health, classifying and treating psychological disorders, and positive psychology.</p>
+              <ul class="topic-list">
+                <li><strong>5.1 Introduction to Health Psychology</strong>Stress; stressors; coping; stress and physical health</li>
+                <li><strong>5.2 Positive Psychology</strong>Well-being; resilience; character strengths; mindfulness</li>
+                <li><strong>5.3 Explaining and Classifying Disorders</strong>Defining psychological disorders; DSM; biopsychosocial model</li>
+                <li><strong>5.4 Categories of Psychological Disorders</strong>Anxiety disorders; OCD; PTSD; depression; bipolar; schizophrenia; personality disorders</li>
+                <li><strong>5.5 Treatment of Disorders</strong>Psychotherapy (psychoanalytic, humanistic, behavioral, cognitive, CBT); biomedical treatment (medication, ECT, TMS)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="course-bottom">
+        <div class="ced-box">
+          <div class="info"><h4>📄 Download CED</h4><p>College Board Course and Exam Description</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-psychology-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+        <div class="option-grid">
+          <a href="psych-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>Past exam papers</p></a>
+          <a href="psych-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB Question Bank</h3><p>College Board question bank</p></a>
         </div>
       </div>
     </div>
@@ -72,6 +207,5 @@
       Content is free for learning use. Reproduction or commercial use is prohibited.
     </div>
   </footer>
-
 </body>
 </html>
