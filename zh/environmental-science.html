@@ -6,310 +6,58 @@
   <title>环境科学 | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    /* ===== 上半部：左标题 + 右视频 ===== */
-    .course-top {
-      display: flex;
-      gap: 40px;
-      align-items: stretch;
-      flex-wrap: wrap;
-      padding: 40px 0 0;
-    }
-    .course-left {
-      flex: 1 1 380px;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .course-left .cn {
-      font-size: 3.4rem;
-      font-weight: 800;
-      color: #4a0072;
-      line-height: 1.2;
-      margin: 0;
-      letter-spacing: 2px;
-    }
-    .course-left .en {
-      font-size: 1.6rem;
-      color: #660099;
-      opacity: 0.7;
-      margin: 16px 0 0;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-    .course-right {
-      flex: 1 1 420px;
-      min-width: 300px;
-      display: flex;
-      align-items: center;
-    }
-    .video-box {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
-      border: 3px solid #000;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 1rem;
-      overflow: hidden;
-    }
-    .video-box iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* ===== 课程介绍整体 ===== */
-    .course-desc {
-      margin-top: 72px;
-      background: #faf7fd;
-      border: 1px solid #ede4f7;
-      border-radius: 20px;
-      padding: 48px 44px;
-    }
-    .desc-title {
-      text-align: center;
-      margin-bottom: 36px;
-      padding-bottom: 24px;
-      border-bottom: 1px dashed #e2d4f0;
-    }
-    .desc-title h2 {
-      font-size: 1.9rem;
-      color: #4a0072;
-      margin: 0;
-    }
-    .desc-title p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      margin-top: 8px;
-      letter-spacing: 1px;
-    }
-    .desc-intro {
-      max-width: 760px;
-      margin: 0 auto 40px;
-      text-align: center;
-      color: #64748b;
-      line-height: 2;
-      font-size: 1.02rem;
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 14px;
-      padding: 26px 32px;
-    }
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-left .en { font-size: 1.6rem; color: #660099; opacity: 0.7; margin: 16px 0 0; font-weight: 500; letter-spacing: 1px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
     .desc-intro strong { color: #4a0072; }
-
-    /* 单元占比总览 */
     .units-overview { margin-top: 8px; }
-    .units-overview h3 {
-      font-size: 1.35rem;
-      color: #4a0072;
-      margin-bottom: 20px;
-      padding-left: 14px;
-      border-left: 5px solid #660099;
-    }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
     .weight-list { display: grid; gap: 12px; }
-    .weight-row {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 12px;
-      padding: 14px 20px;
-    }
-    .weight-row .unit-tag {
-      flex-shrink: 0;
-      font-weight: 700;
-      color: #660099;
-      font-size: 0.95rem;
-      min-width: 62px;
-    }
-    .weight-row .unit-name {
-      flex: 1;
-      color: #1e293b;
-      font-size: 0.98rem;
-    }
-    .weight-row .unit-pct {
-      flex-shrink: 0;
-      background: #660099;
-      color: #fff;
-      font-size: 0.82rem;
-      padding: 4px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-    .weight-note {
-      margin-top: 16px;
-      background: #f3e8ff;
-      border-left: 4px solid #660099;
-      border-radius: 0 10px 10px 0;
-      padding: 14px 20px;
-      color: #64748b;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    /* ===== 各单元卡片 ===== */
-    .unit-cards {
-      margin-top: 48px;
-      display: grid;
-      gap: 28px;
-    }
-    .unit-card {
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: box-shadow 0.25s;
-    }
-    .unit-card:hover {
-      box-shadow: 0 12px 32px rgba(102,0,153,0.1);
-    }
-    .unit-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
-      color: #fff;
-      padding: 18px 26px;
-      flex-wrap: wrap;
-    }
-    .unit-head .title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 0;
-      line-height: 1.5;
-    }
-    .unit-head .title small {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 400;
-      opacity: 0.8;
-      margin-top: 2px;
-    }
-    .unit-head .pct {
-      flex-shrink: 0;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 5px 16px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .title small { display: block; font-size: 0.82rem; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
     .unit-body { padding: 24px 26px 28px; }
-    .unit-body .unit-desc {
-      color: #64748b;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding-bottom: 18px;
-      border-bottom: 1px dashed #ede4f7;
-      line-height: 1.8;
-    }
-    .topic-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 14px;
-    }
-    .topic-list li {
-      line-height: 1.8;
-      color: #475569;
-      font-size: 0.94rem;
-      padding-left: 16px;
-      border-left: 3px solid #ede9fe;
-    }
-    .topic-list li strong {
-      color: #4a0072;
-      display: block;
-      margin-bottom: 2px;
-      font-size: 0.96rem;
-    }
-
-    /* ===== 下方区域 ===== */
-    .course-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-      margin-top: 64px;
-    }
-    .ced-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 24px 28px;
-      flex-wrap: wrap;
-      gap: 16px;
-      transition: all 0.2s;
-    }
-    .ced-box:hover {
-      border-color: #660099;
-      box-shadow: 0 6px 18px rgba(102,0,153,0.1);
-    }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
     .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
     .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
-
-    .option-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-    }
-    .option-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 36px 28px;
-      text-align: center;
-      transition: all 0.3s;
-      background: #fff;
-    }
-    .option-card:hover {
-      border-color: #660099;
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(102,0,153,0.15);
-    }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
     .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
     .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
     .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
-
-    .download-btn {
-      flex-shrink: 0;
-      padding: 10px 24px;
-      background: #660099;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.92rem;
-      transition: background 0.2s;
-    }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
     .download-btn:hover { background: #4a0072; }
-
-    @media (max-width: 700px) {
-      .course-left .cn { font-size: 2.4rem; }
-      .course-left .en { font-size: 1.2rem; }
-    }
-    @media (max-width: 600px) {
-      .course-desc { padding: 28px 20px; }
-      .option-grid { grid-template-columns: 1fr; }
-      .unit-head { flex-direction: column; align-items: flex-start; }
-      .weight-row { flex-wrap: wrap; }
-    }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } .course-left .en { font-size: 1.2rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
   </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -324,8 +72,6 @@
 
   <section class="section">
     <div class="container">
-
-      <!-- 上半部：左标题 + 右视频 -->
       <div class="course-top">
         <div class="course-left">
           <h1 class="cn">环境科学</h1>
@@ -333,7 +79,7 @@
         </div>
         <div class="course-right">
           <div class="video-box">
-            视频占位
+            <img src="../images/ES-pic.png" alt="环境科学">
             <!--
             <iframe src="https://player.bilibili.com/player.html?bvid=你的BV号&p=1"
                     scrolling="no" border="0" frameborder="no"
@@ -343,330 +89,219 @@
         </div>
       </div>
 
-      <!-- ===== 课程介绍 ===== -->
       <div class="course-desc">
-
         <div class="desc-title">
           <h2>课程介绍</h2>
           <p>AP ENVIRONMENTAL SCIENCE · COURSE OVERVIEW</p>
         </div>
-
         <div class="desc-intro">
-          AP 环境科学课程共分为 <strong>9 个单元</strong>，围绕四个核心概念展开：
-          <strong>能量转移</strong>、<strong>地球系统与资源</strong>、
-          <strong>生态系统与生物多样性</strong>、<strong>人类影响与可持续性</strong>。
+          AP 环境科学课程共分为 <strong>9 个单元</strong>，围绕生态系统、
+          生物多样性、人口、地球系统与资源、能源消耗与污染等核心主题展开，
+          强调对自然环境与人类活动相互关系的系统理解。
         </div>
-
-        <!-- 单元占比总览 -->
         <div class="units-overview">
           <h3>单元分布与考试占比</h3>
           <div class="weight-list">
-            <div class="weight-row">
-              <span class="unit-tag">Unit 1</span>
-              <span class="unit-name">The Living World: Ecosystems 生命世界：生态系统</span>
-              <span class="unit-pct">6–8%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 2</span>
-              <span class="unit-name">The Living World: Biodiversity 生命世界：生物多样性</span>
-              <span class="unit-pct">6–8%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 3</span>
-              <span class="unit-name">Populations 种群</span>
-              <span class="unit-pct">10–15%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 4</span>
-              <span class="unit-name">Earth Systems and Resources 地球系统与资源</span>
-              <span class="unit-pct">10–15%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 5</span>
-              <span class="unit-name">Land and Water Use 土地与水资源利用</span>
-              <span class="unit-pct">10–15%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 6</span>
-              <span class="unit-name">Energy Resources and Consumption 能源资源与消费</span>
-              <span class="unit-pct">10–15%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 7</span>
-              <span class="unit-name">Atmospheric Pollution 大气污染</span>
-              <span class="unit-pct">7–10%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 8</span>
-              <span class="unit-name">Aquatic and Terrestrial Pollution 水生与陆地污染</span>
-              <span class="unit-pct">7–10%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 9</span>
-              <span class="unit-name">Global Change 全球变化</span>
-              <span class="unit-pct">15–20%</span>
-            </div>
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">The Living World: Ecosystems 生态系统</span><span class="unit-pct">6–8%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">The Living World: Biodiversity 生物多样性</span><span class="unit-pct">6–8%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">Populations 种群</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Earth Systems and Resources 地球系统与资源</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Land and Water Use 土地与水资源利用</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 6</span><span class="unit-name">Energy Resources and Consumption 能源资源与消耗</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 7</span><span class="unit-name">Atmospheric Pollution 大气污染</span><span class="unit-pct">7–10%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 8</span><span class="unit-name">Aquatic and Terrestrial Pollution 水与陆地污染</span><span class="unit-pct">7–10%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 9</span><span class="unit-name">Global Change 全球变化</span><span class="unit-pct">15–20%</span></div>
           </div>
           <div class="weight-note">
-            <strong>说明</strong>：Unit 9（全球变化）占比最高，是整门课程的综合与升华；
-            Unit 3–6 并列第二，均为重点单元，覆盖人口、地球系统、土地水资源和能源四大核心议题。
+            <strong>说明</strong>：Unit 9（全球变化）占比最高，是整门课程的收尾与综合；
+            Unit 3、Unit 4、Unit 5、Unit 6 并列第二，均为重点单元。
           </div>
         </div>
-
-        <!-- 各单元卡片 -->
         <div class="unit-cards">
-
-          <!-- Unit 1 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 1 · The Living World: Ecosystems<small>生命世界：生态系统</small></h3>
-              <span class="pct">6–8%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 1 · The Living World: Ecosystems<small>生态系统</small></h3><span class="pct">6–8%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">建立生态学基础，重点理解生态系统的组成、生物群落和物质循环。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 1 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>1.1 Introduction to Ecosystems 生态系统导论</strong>生态系统的定义与组成；生物因素与非生物因素</li>
-                <li><strong>1.2 Terrestrial Biomes 陆地生物群落</strong>主要陆地生物群落（热带雨林、草原、沙漠、苔原等）的特征与分布</li>
-                <li><strong>1.3 Aquatic Biomes 水生生物群落</strong>淡水与海洋生物群落的特征；盐度、深度、光照的影响</li>
-                <li><strong>1.4 The Carbon Cycle 碳循环</strong>碳在生物圈、大气圈、岩石圈之间的循环；光合作用与呼吸作用</li>
-                <li><strong>1.5 The Nitrogen Cycle 氮循环</strong>固氮、硝化、反硝化；人类活动对氮循环的影响</li>
-                <li><strong>1.6 The Phosphorus Cycle 磷循环</strong>磷的循环路径；磷作为限制性养分</li>
-                <li><strong>1.7 The Hydrologic (Water) Cycle 水循环</strong>蒸发、蒸腾、降水、径流；水循环对生态系统的重要性</li>
-                <li><strong>1.8 Primary Productivity 初级生产力</strong>总初级生产力（GPP）与净初级生产力（NPP）；影响生产力的因素</li>
-                <li><strong>1.9 Trophic Levels 营养级</strong>生产者、消费者、分解者；食物链中的位置</li>
-                <li><strong>1.10 Energy Flow and the 10% Rule 能量流动与10%法则</strong>能量在营养级间的传递效率；能量金字塔</li>
-                <li><strong>1.11 Food Chains and Food Webs 食物链与食物网</strong>食物链与食物网的区别；能量流动与物质循环</li>
+                <li><strong>1.1 Introduction to Ecosystems 生态系统导论</strong>生态系统的组成；生产者、消费者、分解者</li>
+                <li><strong>1.2 Terrestrial Biomes 陆地生物群落</strong>主要生物群落的特征与分布</li>
+                <li><strong>1.3 Aquatic Biomes 水生生物群落</strong>淡水与海洋生态系统</li>
+                <li><strong>1.4 The Carbon Cycle 碳循环</strong>碳在生物圈中的循环路径</li>
+                <li><strong>1.5 The Nitrogen Cycle 氮循环</strong>氮的固定、硝化与反硝化</li>
+                <li><strong>1.6 The Phosphorus Cycle 磷循环</strong>磷在生态系统中的循环</li>
+                <li><strong>1.7 The Hydrologic Cycle 水循环</strong>蒸发、凝结、降水、径流</li>
+                <li><strong>1.8 Primary Productivity 初级生产力</strong>净初级生产力；影响生产力的因素</li>
+                <li><strong>1.9 Trophic Levels 营养级</strong>能量金字塔；10% 法则</li>
+                <li><strong>1.10 Energy Flow and the 10% Rule 能量流动与 10% 法则</strong>能量在营养级间的传递</li>
+                <li><strong>1.11 Food Chains and Food Webs 食物链与食物网</strong>捕食关系；食物网结构</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 2 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 2 · The Living World: Biodiversity<small>生命世界：生物多样性</small></h3>
-              <span class="pct">6–8%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 2 · The Living World: Biodiversity<small>生物多样性</small></h3><span class="pct">6–8%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">聚焦生物多样性的价值、分布规律及生态演替。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 2 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>2.1 Introduction to Biodiversity 生物多样性导论</strong>遗传多样性、物种多样性、生态系统多样性</li>
-                <li><strong>2.2 Ecosystem Services 生态系统服务</strong>供给服务、调节服务、文化服务、支持服务</li>
-                <li><strong>2.3 Island Biogeography 岛屿生物地理学</strong>物种-面积关系；岛屿大小与隔离程度对物种丰富度的影响</li>
-                <li><strong>2.4 Ecological Tolerance 生态耐受性</strong>物种对环境条件的耐受范围；指示物种</li>
-                <li><strong>2.5 Natural Disruptions to Ecosystems 自然干扰</strong>火灾、洪水、风暴等自然干扰的作用</li>
-                <li><strong>2.6 Adaptations 适应</strong>物种对环境的形态、生理和行为适应</li>
-                <li><strong>2.7 Ecological Succession 生态演替</strong>初级演替与次级演替；先锋物种与顶极群落</li>
+                <li><strong>2.1 Introduction to Biodiversity 生物多样性导论</strong>遗传、物种、生态系统多样性</li>
+                <li><strong>2.2 Ecosystem Services 生态系统服务</strong>供给、调节、支持、文化服务</li>
+                <li><strong>2.3 Island Biogeography 岛屿生物地理学</strong>面积与隔离对物种丰富度的影响</li>
+                <li><strong>2.4 Ecological Tolerance 生态耐受性</strong>物种对环境的适应范围</li>
+                <li><strong>2.5 Natural Disruptions to Ecosystems 自然干扰</strong>火灾、洪水、风暴等</li>
+                <li><strong>2.6 Adaptations 适应</strong>形态、生理、行为适应</li>
+                <li><strong>2.7 Ecological Succession 生态演替</strong>初级与次级演替</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 3 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 3 · Populations<small>种群</small></h3>
-              <span class="pct">10–15%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 3 · Populations<small>种群</small></h3><span class="pct">10–15%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">研究种群特征、增长模式及人类人口动态。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 3 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>3.1 Generalist and Specialist Species 泛化种与特化种</strong>生态位宽度；对环境的适应策略</li>
-                <li><strong>3.2 K-Selected r-Selected Species K-选择与 r-选择物种</strong>繁殖策略；存活曲线；种群增长特征</li>
-                <li><strong>3.3 Survivorship Curves 存活曲线</strong>I 型、II 型、III 型存活曲线；物种生活史策略</li>
-                <li><strong>3.4 Carrying Capacity 环境容纳量</strong>种群增长的上限；逻辑斯谛增长模型</li>
-                <li><strong>3.5 Population Growth and Resource Availability 种群增长与资源可得性</strong>指数增长与逻辑斯谛增长；资源限制</li>
-                <li><strong>3.6 Age Structure Diagrams 年龄结构图</strong>人口金字塔的解读；人口增长趋势预测</li>
-                <li><strong>3.7 Total Fertility Rate 总和生育率</strong>影响生育率的因素；生育率与人口增长的关系</li>
-                <li><strong>3.8 Human Population Dynamics 人类人口动态</strong>人口增长历史；发达国家与发展中国家的人口差异</li>
-                <li><strong>3.9 Demographic Transition 人口转型</strong>人口转型四阶段模型；出生率、死亡率与人口增长的关系</li>
+                <li><strong>3.1 Specialist vs. Generalist Species 特化种与泛化种</strong>生态位宽度与生存策略</li>
+                <li><strong>3.2 K-Selected vs. R-Selected Species K 对策与 R 对策</strong>繁殖策略与种群特征</li>
+                <li><strong>3.3 Survivorship Curves 存活曲线</strong>I、II、III 型存活曲线</li>
+                <li><strong>3.4 Carrying Capacity 环境容纳量</strong>K 值；逻辑斯谛增长</li>
+                <li><strong>3.5 Population Growth and Resource Availability 种群增长与资源</strong>指数增长与资源限制</li>
+                <li><strong>3.6 Age Structure Diagrams 年龄结构图</strong>人口金字塔的解读</li>
+                <li><strong>3.7 Total Fertility Rate 总和生育率</strong>TFR 与人口增长</li>
+                <li><strong>3.8 Human Population Dynamics 人口动态</strong>人口转型模型</li>
+                <li><strong>3.9 Demographic Transition 人口转型</strong>四个阶段与特征</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 4 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 4 · Earth Systems and Resources<small>地球系统与资源</small></h3>
-              <span class="pct">10–15%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 4 · Earth Systems and Resources<small>地球系统与资源</small></h3><span class="pct">10–15%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">研究地球的物理系统，包括地质、土壤、大气和气候。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 4 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>4.1 Plate Tectonics 板块构造</strong>板块边界类型；地震、火山、山脉的形成</li>
-                <li><strong>4.2 Soil Formation and Erosion 土壤形成与侵蚀</strong>成土因素；土壤剖面；侵蚀的原因与后果</li>
-                <li><strong>4.3 Soil Composition and Properties 土壤组成与性质</strong>土壤质地、结构、pH；土壤肥力</li>
-                <li><strong>4.4 Earth's Atmosphere 地球大气</strong>大气层结构；温室气体；大气环流</li>
-                <li><strong>4.5 Global Wind Patterns 全球风带</strong>信风、西风带、极地东风；科里奥利效应</li>
-                <li><strong>4.6 Watersheds 流域</strong>流域的定义与特征；分水岭；流域管理</li>
-                <li><strong>4.7 Solar Radiation and Earth's Seasons 太阳辐射与地球季节</strong>地球倾斜与季节变化；太阳辐射分布</li>
-                <li><strong>4.8 Earth's Geography and Climate 地球地理与气候</strong>纬度、海拔、洋流对气候的影响</li>
-                <li><strong>4.9 El Niño and La Niña 厄尔尼诺与拉尼娜</strong>ENSO 现象；对全球气候的影响</li>
+                <li><strong>4.1 Plate Tectonics 板块构造</strong>板块边界类型；地震与火山</li>
+                <li><strong>4.2 Soil Formation and Erosion 土壤形成与侵蚀</strong>土壤剖面；侵蚀类型</li>
+                <li><strong>4.3 Soil Composition and Properties 土壤组成与性质</strong>质地、孔隙度、pH、养分</li>
+                <li><strong>4.4 Earth's Atmosphere 地球大气</strong>大气层结构；温室效应</li>
+                <li><strong>4.5 Global Wind Patterns 全球风带</strong>信风、西风、极地东风</li>
+                <li><strong>4.6 Watersheds 流域</strong>分水岭与水流路径</li>
+                <li><strong>4.7 Solar Radiation and Earth's Seasons 太阳辐射与季节</strong>地轴倾角与季节变化</li>
+                <li><strong>4.8 Earth's Geography and Climate 地理与气候</strong>纬度、地形对气候的影响</li>
+                <li><strong>4.9 El Niño and La Niña 厄尔尼诺与拉尼娜</strong>ENSO 对全球气候的影响</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 5 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 5 · Land and Water Use<small>土地与水资源利用</small></h3>
-              <span class="pct">10–15%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 5 · Land and Water Use<small>土地与水资源利用</small></h3><span class="pct">10–15%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">研究人类如何利用土地和水资源，以及相关的环境问题与可持续方案。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 5 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>5.1 The Tragedy of the Commons 公地悲剧</strong>共有资源的过度使用；解决方案</li>
-                <li><strong>5.2 Clearcutting 皆伐</strong>皆伐的环境影响；森林管理</li>
-                <li><strong>5.3 The Green Revolution 绿色革命</strong>农业技术进步；高产作物；环境影响</li>
-                <li><strong>5.4 Impacts of Agricultural Practices 农业实践的影响</strong>耕作、灌溉、施肥、农药的环境影响</li>
-                <li><strong>5.5 Irrigation Methods 灌溉方法</strong>漫灌、喷灌、滴灌；效率与环境影响</li>
-                <li><strong>5.6 Pest Control Methods 病虫害防治方法</strong>化学农药、生物防治、综合害虫管理（IPM）</li>
-                <li><strong>5.7 Meat Production Methods 肉类生产方法</strong>集中饲养、放牧；环境影响</li>
-                <li><strong>5.8 Impacts of Overfishing 过度捕捞的影响</strong>渔业崩溃；可持续渔业管理</li>
-                <li><strong>5.9 Impacts of Mining 采矿的影响</strong>露天采矿、地下采矿；环境破坏与修复</li>
-                <li><strong>5.10 Impacts of Urbanization 城市化的影响</strong>城市扩张；热岛效应；城市生态足迹</li>
-                <li><strong>5.11 Ecological Footprints 生态足迹</strong>生态足迹的计算与意义；可持续性</li>
-                <li><strong>5.12 Introduction to Sustainability 可持续性导论</strong>可持续发展的定义与原则</li>
-                <li><strong>5.13 Methods to Reduce Urban Runoff 减少城市径流的方法</strong>绿色基础设施；雨水花园</li>
-                <li><strong>5.14 Integrated Pest Management 综合害虫管理</strong>IPM 策略；减少化学农药使用</li>
-                <li><strong>5.15 Sustainable Agriculture 可持续农业</strong>有机农业、轮作、保护性耕作</li>
-                <li><strong>5.16 Aquaculture 水产养殖</strong>水产养殖的类型；环境影响与可持续性</li>
-                <li><strong>5.17 Sustainable Forestry 可持续林业</strong>选择性采伐；森林认证；生态恢复</li>
+                <li><strong>5.1 The Tragedy of the Commons 公地悲剧</strong>共有资源与过度使用</li>
+                <li><strong>5.2 Clearcutting 皆伐</strong>森林砍伐的环境影响</li>
+                <li><strong>5.3 The Green Revolution 绿色革命</strong>农业技术革新及其影响</li>
+                <li><strong>5.4 Impacts of Agricultural Practices 农业实践的影响</strong>土壤退化、水污染</li>
+                <li><strong>5.5 Irrigation Methods 灌溉方式</strong>漫灌、滴灌等</li>
+                <li><strong>5.6 Pest Control Methods 害虫控制</strong>农药与生物防治</li>
+                <li><strong>5.7 Meat Production Methods 肉类生产</strong>集中饲养与环境影响</li>
+                <li><strong>5.8 Impacts of Overfishing 过度捕捞</strong>渔业资源枯竭</li>
+                <li><strong>5.9 Impacts of Mining 采矿影响</strong>露天与地下开采</li>
+                <li><strong>5.10 Impacts of Urbanization 城市化影响</strong>热岛效应、不透水地面</li>
+                <li><strong>5.11 Ecological Footprints 生态足迹</strong>资源消耗的衡量</li>
+                <li><strong>5.12 Introduction to Sustainability 可持续性导论</strong>可持续发展的原则</li>
+                <li><strong>5.13 Methods to Reduce Urban Runoff 减少城市径流</strong>绿色基础设施</li>
+                <li><strong>5.14 Integrated Pest Management 综合害虫管理</strong>IPM 策略</li>
+                <li><strong>5.15 Sustainable Agriculture 可持续农业</strong>有机农业、轮作</li>
+                <li><strong>5.16 Aquaculture 水产养殖</strong>优势与问题</li>
+                <li><strong>5.17 Sustainable Forestry 可持续林业</strong>选择性采伐、再造林</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 6 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 6 · Energy Resources and Consumption<small>能源资源与消费</small></h3>
-              <span class="pct">10–15%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 6 · Energy Resources and Consumption<small>能源资源与消耗</small></h3><span class="pct">10–15%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">研究能源类型、分布、消费及环境影响。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 6 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>6.1 Renewable and Nonrenewable Resources 可再生与不可再生资源</strong>能源分类；化石燃料 vs. 可再生能源</li>
-                <li><strong>6.2 Global Energy Consumption 全球能源消费</strong>能源消费模式；发达国家与发展中国家的差异</li>
-                <li><strong>6.3 Fuel Types and Uses 燃料类型与用途</strong>煤炭、石油、天然气、核能、可再生能源的用途</li>
-                <li><strong>6.4 Distribution of Natural Energy Resources 自然能源的分布</strong>化石燃料的地理分布；能源安全</li>
-                <li><strong>6.5 Fossil Fuels 化石燃料</strong>形成过程；开采与燃烧的环境影响</li>
-                <li><strong>6.6 Nuclear Power 核能</strong>核裂变；核电站；核废料处理</li>
-                <li><strong>6.7 Energy from Biomass 生物质能</strong>生物质燃烧、生物燃料；碳中和潜力</li>
-                <li><strong>6.8 Solar Energy 太阳能</strong>光伏发电、太阳能热发电；效率与成本</li>
-                <li><strong>6.9 Hydroelectric Power 水力发电</strong>水电站类型；环境影响</li>
-                <li><strong>6.10 Geothermal Energy 地热能</strong>地热发电与直接利用；适用地区</li>
-                <li><strong>6.11 Hydrogen Fuel Cell 氢燃料电池</strong>氢能的生产与利用；零排放潜力</li>
-                <li><strong>6.12 Wind Energy 风能</strong>风力发电；选址与环境影响</li>
-                <li><strong>6.13 Energy Conservation 能源节约</strong>提高能效；行为改变；政策工具</li>
+                <li><strong>6.1 Renewable and Nonrenewable Resources 可再生与不可再生资源</strong>资源分类</li>
+                <li><strong>6.2 Global Energy Consumption 全球能源消耗</strong>能源结构与趋势</li>
+                <li><strong>6.3 Fuel Types and Uses 燃料类型与用途</strong>化石燃料、核能、可再生能源</li>
+                <li><strong>6.4 Distribution of Natural Energy Resources 自然资源分布</strong>地理分布不均</li>
+                <li><strong>6.5 Fossil Fuels 化石燃料</strong>煤、石油、天然气的形成与使用</li>
+                <li><strong>6.6 Nuclear Power 核能</strong>核裂变；核废料问题</li>
+                <li><strong>6.7 Energy from Biomass 生物质能</strong>生物燃料</li>
+                <li><strong>6.8 Solar Energy 太阳能</strong>光伏与太阳能热</li>
+                <li><strong>6.9 Hydroelectric Power 水电</strong>大坝的环境影响</li>
+                <li><strong>6.10 Geothermal Energy 地热能</strong>地热发电与供暖</li>
+                <li><strong>6.11 Hydrogen Fuel Cell 氢燃料电池</strong>原理与应用</li>
+                <li><strong>6.12 Wind Energy 风能</strong>风力发电</li>
+                <li><strong>6.13 Energy Conservation 节能</strong>提高效率与减少浪费</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 7 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 7 · Atmospheric Pollution<small>大气污染</small></h3>
-              <span class="pct">7–10%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 7 · Atmospheric Pollution<small>大气污染</small></h3><span class="pct">7–10%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">研究大气污染物的来源、影响及控制方法。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 7 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>7.1 Introduction to Air Pollution 空气污染导论</strong>主要空气污染物；一次污染物与二次污染物</li>
-                <li><strong>7.2 Photochemical Smog 光化学烟雾</strong>形成机制；氮氧化物与挥发性有机物；健康影响</li>
-                <li><strong>7.3 Thermal Inversion 逆温</strong>逆温层的形成；对污染物扩散的影响</li>
-                <li><strong>7.4 Atmospheric CO₂ and Particulates 大气 CO₂ 与颗粒物</strong>来源与影响；PM2.5 与 PM10</li>
-                <li><strong>7.5 Indoor Air Pollutants 室内空气污染物</strong>甲醛、氡、石棉、烟草烟雾；健康风险</li>
-                <li><strong>7.6 Reduction of Air Pollutants 减少空气污染物</strong>清洁技术；法规；末端治理</li>
-                <li><strong>7.7 Acid Rain 酸雨</strong>形成机制；SO₂ 与 NOx；对生态系统的影响</li>
-                <li><strong>7.8 Noise Pollution 噪音污染</strong>来源与健康影响；控制措施</li>
+                <li><strong>7.1 Introduction to Air Pollution 空气污染导论</strong>主要污染物与来源</li>
+                <li><strong>7.2 Photochemical Smog 光化学烟雾</strong>形成机制与影响</li>
+                <li><strong>7.3 Thermal Inversion 逆温</strong>逆温与污染积聚</li>
+                <li><strong>7.4 Atmospheric CO₂ and Particulates 大气 CO₂ 与颗粒物</strong>来源与影响</li>
+                <li><strong>7.5 Indoor Air Pollutants 室内空气污染</strong>甲醛、氡、石棉等</li>
+                <li><strong>7.6 Reduction of Air Pollutants 减少空气污染</strong>技术与管理措施</li>
+                <li><strong>7.7 Acid Rain 酸雨</strong>成因与影响</li>
+                <li><strong>7.8 Noise Pollution 噪音污染</strong>来源与健康影响</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 8 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 8 · Aquatic and Terrestrial Pollution<small>水生与陆地污染</small></h3>
-              <span class="pct">7–10%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 8 · Aquatic and Terrestrial Pollution<small>水与陆地污染</small></h3><span class="pct">7–10%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">研究水体与陆地污染的类型、影响及治理。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 8 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>8.1 Sources of Pollution 污染源</strong>点源与非点源污染；主要污染类型</li>
-                <li><strong>8.2 Human Impacts on Ecosystems 人类对生态系统的影响</strong>栖息地破坏、污染、过度开发</li>
-                <li><strong>8.3 Endocrine Disruptors 内分泌干扰物</strong>化学物质对激素系统的干扰；健康影响</li>
-                <li><strong>8.4 Human Impacts on Wetlands and Mangroves 人类对湿地与红树林的影响</strong>填埋、污染、破坏；生态服务损失</li>
-                <li><strong>8.5 Eutrophication 富营养化</strong>营养盐过量；藻华；缺氧死区</li>
-                <li><strong>8.6 Thermal Pollution 热污染</strong>工业冷却水排放；溶解氧下降</li>
-                <li><strong>8.7 Persistent Organic Pollutants (POPs) 持久性有机污染物</strong>生物累积与生物放大；全球影响</li>
-                <li><strong>8.8 Bioaccumulation and Biomagnification 生物累积与生物放大</strong>污染物在食物链中的浓缩</li>
-                <li><strong>8.9 Solid Waste Disposal 固体废物处理</strong>填埋、焚烧、回收；环境影响</li>
-                <li><strong>8.10 Waste Reduction Methods 废物减量方法</strong>减量化、再利用、再循环；循环经济</li>
-                <li><strong>8.11 Sewage Treatment 污水处理</strong>一级、二级、三级处理；污泥处理</li>
-                <li><strong>8.12 Lethal Dose 50% (LD₅₀) 半数致死剂量</strong>毒性测试；剂量-反应关系</li>
-                <li><strong>8.13 Dose Response Curve 剂量-反应曲线</strong>毒理学基础；阈值与安全标准</li>
-                <li><strong>8.14 Pollution and Human Health 污染与人类健康</strong>污染物暴露途径；健康风险</li>
-                <li><strong>8.15 Pathogens and Infectious Diseases 病原体与传染病</strong>水传播与食源性疾病；公共卫生</li>
+                <li><strong>8.1 Sources of Pollution 污染源</strong>点源与非点源污染</li>
+                <li><strong>8.2 Human Impacts on Ecosystems 人类对生态系统的影响</strong>栖息地破坏与物种丧失</li>
+                <li><strong>8.3 Endocrine Disruptors 内分泌干扰物</strong>对生物体的影响</li>
+                <li><strong>8.4 Human Impacts on Wetlands and Mangroves 湿地与红树林</strong>生态功能与保护</li>
+                <li><strong>8.5 Eutrophication 富营养化</strong>成因与后果</li>
+                <li><strong>8.6 Thermal Pollution 热污染</strong>对水生生态的影响</li>
+                <li><strong>8.7 Persistent Organic Pollutants 持久性有机污染物</strong>生物累积与放大</li>
+                <li><strong>8.8 Bioaccumulation and Biomagnification 生物累积与放大</strong>食物链中的富集</li>
+                <li><strong>8.9 Solid Waste Disposal 固体废物处理</strong>填埋、焚烧、回收</li>
+                <li><strong>8.10 Waste Reduction Methods 减少废物</strong>循环利用与减量</li>
+                <li><strong>8.11 Sewage Treatment 污水处理</strong>一级、二级、三级处理</li>
+                <li><strong>8.12 Lethal Dose 50% (LD50) 半数致死量</strong>毒性衡量</li>
+                <li><strong>8.13 Dose-Response Curve 剂量-反应曲线</strong>毒理学基础</li>
+                <li><strong>8.14 Pollution and Human Health 污染与人类健康</strong>污染物对健康的影响</li>
+                <li><strong>8.15 Pathogens and Infectious Diseases 病原体与传染病</strong>水传播与病媒传播疾病</li>
               </ul>
             </div>
           </div>
-
-          <!-- Unit 9 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 9 · Global Change<small>全球变化</small></h3>
-              <span class="pct">15–20%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 9 · Global Change<small>全球变化</small></h3><span class="pct">15–20%</span></div>
             <div class="unit-body">
-              <p class="unit-desc">综合前面所学，研究全球性环境变化及其对生物多样性和人类社会的影响。</p>
+              <p class="unit-desc">【课程介绍占位】这里将介绍 AP 环境科学 Unit 9 的核心内容。</p>
               <ul class="topic-list">
-                <li><strong>9.1 Stratospheric Ozone Depletion 平流层臭氧消耗</strong>臭氧层的作用；CFCs；臭氧空洞</li>
-                <li><strong>9.2 Reducing Ozone Depletion 减少臭氧消耗</strong>蒙特利尔议定书；替代品；恢复进展</li>
-                <li><strong>9.3 The Greenhouse Effect 温室效应</strong>自然温室效应；温室气体；能量平衡</li>
-                <li><strong>9.4 Increases in the Greenhouse Gases 温室气体增加</strong>CO₂、CH₄、N₂O 的来源与趋势</li>
-                <li><strong>9.5 Global Climate Change 全球气候变化</strong>温度上升；极端天气；海平面上升</li>
-                <li><strong>9.6 Ocean Warming 海洋变暖</strong>海洋温度上升；珊瑚白化；海洋生态系统影响</li>
-                <li><strong>9.7 Ocean Acidification 海洋酸化</strong>CO₂ 溶解；pH 下降；对海洋生物的影响</li>
-                <li><strong>9.8 Invasive Species 入侵物种</strong>入侵途径；生态影响；管理策略</li>
-                <li><strong>9.9 Endangered Species 濒危物种</strong>濒危等级；保护措施；法律框架</li>
-                <li><strong>9.10 Human Impacts on Biodiversity 人类对生物多样性的影响</strong>栖息地丧失、过度开发、污染、气候变化</li>
+                <li><strong>9.1 Stratospheric Ozone Depletion 平流层臭氧损耗</strong>臭氧空洞与 CFCs</li>
+                <li><strong>9.2 Reducing Ozone Depletion 减少臭氧损耗</strong>蒙特利尔议定书</li>
+                <li><strong>9.3 The Greenhouse Effect 温室效应</strong>温室气体与机制</li>
+                <li><strong>9.4 Increases in the Greenhouse Gases 温室气体增加</strong>人类活动的影响</li>
+                <li><strong>9.5 Global Climate Change 全球气候变化</strong>观测证据与影响</li>
+                <li><strong>9.6 Ocean Warming and Acidification 海洋变暖与酸化</strong>CO₂ 溶解的影响</li>
+                <li><strong>9.7 Invasive Species 入侵物种</strong>生态影响与控制</li>
+                <li><strong>9.8 Endangered Species 濒危物种</strong>保护策略</li>
+                <li><strong>9.9 Human Impact on Biodiversity 人类对生物多样性的影响</strong>栖息地丧失、过度开发</li>
+                <li><strong>9.10 Sustainability and Human Development 可持续性与人类发展</strong>综合视角</li>
               </ul>
             </div>
           </div>
-
         </div>
-
       </div>
 
-      <!-- 下方区域 -->
       <div class="course-bottom">
-
         <div class="ced-box">
-          <div class="info">
-            <h4>📄 下载 CED</h4>
-            <p>College Board 官方课程与考试说明</p>
-          </div>
-          <a href="https://apcentral.collegeboard.org/media/pdf/ap-environmental-science-course-and-exam-description.pdf"
-             class="download-btn"
-             target="_blank"
-             rel="noopener">
-            下载
-          </a>
+          <div class="info"><h4>📄 下载 CED</h4><p>College Board 官方课程与考试说明</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-environmental-science-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">下载</a>
         </div>
-
         <div class="option-grid">
-          <a href="env-past-papers.html" class="option-card">
-            <div class="icon">📄</div>
-            <h3>Past Papers</h3>
-            <p>往年真题试卷</p>
-          </a>
-          <a href="env-cb-bank.html" class="option-card">
-            <div class="icon">📝</div>
-            <h3>CB 题库</h3>
-            <p>College Board 官方题库</p>
-          </a>
+          <a href="env-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>往年真题试卷</p></a>
+          <a href="env-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB 题库</h3><p>College Board 官方题库</p></a>
         </div>
-
       </div>
-
     </div>
   </section>
 
@@ -676,6 +311,5 @@
       本站内容免费供学习使用，未经许可不得转载或商用。
     </div>
   </footer>
-
 </body>
 </html>
