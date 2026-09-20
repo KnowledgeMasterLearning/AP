@@ -5,65 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于我 | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-
-  <header class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">Knowledge Master</a>
-      <nav>
-        <a href="index.html">首页</a>
-        <a href="courses.html">课程</a>
-        <a href="about.html" class="active">关于我</a>
-        <a href="../en/index.html" class="lang-switch">EN</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="section">
-    <div class="container">
-      <div class="about-card">
-
-        <img class="avatar"
-             src="https://api.dicebear.com/7.x/initials/svg?seed=KM&backgroundColor=660099"
-             alt="头像">
-
-        <h2>你的名字</h2>
-        <p class="title">AP 课程教师 · XX 学校</p>
-
-        <p class="bio">
-          【个人介绍占位】这里将介绍你的教学经历、教学理念，
-          以及做这个网站的初衷。
-        </p>
-
-        <div class="contact-list">
-          <a href="mailto:your@email.com">✉️ 邮箱</a>
-          <a href="#" id="wechatBtn">💬 微信</a>
-          <a href="https://space.bilibili.com/457613168" target="_blank" rel="noopener">📺 B站</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 微信二维码弹窗 ===== -->
-  <div id="wechatModal">
-    <div class="wechat-box">
-      <img src="../images/wechat-qr.png" alt="微信二维码">
-      <p>扫码添加微信</p>
-      <button id="wechatClose">关闭</button>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      © 2025 Knowledge Master | 学者同行 · 保留所有权利<br>
-      本站内容免费供学习使用，未经许可不得转载或商用。
-    </div>
-  </footer>
-
-  <!-- ===== 弹窗样式 ===== -->
   <style>
+    /* 让 footer 沉底 */
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .main-content {
+      flex: 1;   /* 中间内容撑开，把 footer 推到底部 */
+    }
+
+    /* ===== 关于我卡片 ===== */
+    .about-card {
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+      box-shadow: 0 8px 28px rgba(102,0,153,0.06);
+    }
+    .about-card .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #f3e8ff;
+    }
+    .about-card h2 {
+      font-size: 1.6rem;
+      color: #4a0072;
+      margin: 0 0 8px;
+    }
+    .about-card .title {
+      color: #660099;
+      margin-bottom: 22px;
+      font-size: 1rem;
+    }
+    .about-card .bio {
+      color: #64748b;
+      line-height: 2;
+      margin: 0 auto 30px;
+      max-width: 480px;
+    }
+    .contact-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contact-list a {
+      padding: 10px 24px;
+      background: #f3e8ff;
+      color: #4a0072;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+      border: 1px solid #e9d5ff;
+    }
+    .contact-list a:hover {
+      background: #660099;
+      color: #fff;
+      border-color: #660099;
+    }
+
+    /* ===== 微信弹窗 ===== */
     #wechatModal {
       display: none;
       position: fixed;
@@ -111,8 +125,67 @@
       background: #4a0072;
     }
   </style>
+</head>
+<body>
 
-  <!-- ===== 弹窗脚本 ===== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Knowledge Master</a>
+      <nav>
+        <a href="index.html">首页</a>
+        <a href="courses.html">课程</a>
+        <a href="about.html" class="active">关于我</a>
+        <a href="../en/about.html" class="lang-switch">EN</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 中间内容 -->
+  <div class="main-content">
+    <section class="section">
+      <div class="container">
+        <div class="about-card">
+
+          <img class="avatar"
+               src="../images/home-photo.jpg"
+               alt="头像"
+               onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=KM&backgroundColor=660099'">
+
+          <h2>你的名字</h2>
+          <p class="title">AP 课程教师 · XX 学校</p>
+
+          <p class="bio">
+            【个人介绍占位】这里将介绍你的教学经历、教学理念，
+            以及做这个网站的初衷。
+          </p>
+
+          <div class="contact-list">
+            <a href="mailto:your@email.com">✉️ 邮箱</a>
+            <a href="#" id="wechatBtn">💬 微信</a>
+            <a href="https://space.bilibili.com/你的UID" target="_blank" rel="noopener">📺 B站</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 微信弹窗 -->
+  <div id="wechatModal">
+    <div class="wechat-box">
+      <img src="../images/wechat-qr.png" alt="微信二维码">
+      <p>扫码添加微信</p>
+      <button id="wechatClose">关闭</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      © 2025 Knowledge Master | 学者同行 · 保留所有权利<br>
+      本站内容免费供学习使用，未经许可不得转载或商用。
+    </div>
+  </footer>
+
   <script>
     const wechatBtn = document.getElementById('wechatBtn');
     const wechatModal = document.getElementById('wechatModal');
@@ -127,7 +200,6 @@
       wechatModal.classList.remove('show');
     });
 
-    /* 点遮罩层也能关闭 */
     wechatModal.addEventListener('click', function(e) {
       if (e.target === wechatModal) {
         wechatModal.classList.remove('show');
