@@ -5,9 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Microeconomics | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-left .en { font-size: 1.6rem; color: #660099; opacity: 0.7; margin: 16px 0 0; font-weight: 500; letter-spacing: 1px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
+    .desc-intro strong { color: #4a0072; }
+    .units-overview { margin-top: 8px; }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
+    .weight-list { display: grid; gap: 12px; }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .title small { display: block; font-size: 0.82rem; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+    .unit-body { padding: 24px 26px 28px; }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
+    .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
+    .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
+    .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
+    .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
+    .download-btn:hover { background: #4a0072; }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } .course-left .en { font-size: 1.2rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
+  </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -15,57 +65,153 @@
         <a href="index.html">Home</a>
         <a href="courses.html" class="active">Courses</a>
         <a href="about.html">About</a>
-        <a href="../zh/index.html" class="lang-switch">中文</a>
+        <a href="../zh/microeconomics.html" class="lang-switch">中文</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>Microeconomics</h1>
-      <p>AP Microeconomics</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
-
-      <div class="course-intro">
-        [Course introduction placeholder] This section will introduce the
-        content, exam focus, and study tips for AP Microeconomics.
-      </div>
-
-      <div class="download-section">
-        <h2>📥 Downloads</h2>
-        <div class="download-list">
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Notes (PDF)</h4>
-              <p>Course notes and key concepts</p>
-            </div>
-            <a href="../files/micro-notes.pdf" class="download-btn" download>Download</a>
+      <div class="course-top">
+        <div class="course-left">
+          <h1 class="cn">Microeconomics</h1>
+        </div>
+        <div class="course-right">
+          <div class="video-box">
+            <img src="../images/micro-pic.png" alt="Microeconomics">
+            <!--
+            <iframe src="https://player.bilibili.com/player.html?bvid=你的BV号&p=1"
+                    scrolling="no" border="0" frameborder="no"
+                    framespacing="0" allowfullscreen="true"></iframe>
+            -->
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Past Papers (PDF)</h4>
-              <p>Includes past exam papers</p>
-            </div>
-            <a href="../files/micro-past-papers.pdf" class="download-btn" download>Download</a>
-          </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 CB Question Bank (PDF)</h4>
-              <p>College Board official question bank</p>
-            </div>
-            <a href="../files/micro-cb-bank.pdf" class="download-btn" download>Download</a>
-          </div>
-
         </div>
       </div>
 
+      <div class="course-desc">
+        <div class="desc-title">
+          <h2>Course Overview</h2>
+          <p>AP MICROECONOMICS · COURSE OVERVIEW</p>
+        </div>
+        <div class="desc-intro">
+          AP Microeconomics is divided into <strong>6 units</strong>, built around four core concepts:
+          <strong>Scarcity</strong>, <strong>Cost-Benefit &amp; Marginal Analysis</strong>,
+          <strong>Production and Resource Allocation</strong>,
+          <strong>Market Efficiency and Government Policy</strong>.
+        </div>
+        <div class="units-overview">
+          <h3>Units and Exam Weighting</h3>
+          <div class="weight-list">
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">Basic Economic Concepts</span><span class="unit-pct">12–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">Supply and Demand</span><span class="unit-pct">20–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">Production, Cost, and the Perfect Competition Model</span><span class="unit-pct">22–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Imperfect Competition</span><span class="unit-pct">15–22%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Factor Markets</span><span class="unit-pct">10–13%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 6</span><span class="unit-name">Market Failure and the Role of Government</span><span class="unit-pct">8–13%</span></div>
+          </div>
+          <div class="weight-note">
+            <strong>Note</strong>: Units 2 and 3 together account for about <strong>42–50%</strong> of the exam,
+            making them the most important part of the course.
+          </div>
+        </div>
+        <div class="unit-cards">
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 1 · Basic Economic Concepts</h3><span class="pct">12–15%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Establishes the economic way of thinking — the foundation of the whole course.</p>
+              <ul class="topic-list">
+                <li><strong>1.1 Scarcity</strong>Limited resources vs. unlimited wants; scarcity as the fundamental economic problem</li>
+                <li><strong>1.2 Resource Allocation and Economic Systems</strong>Three basic economic systems; "what, how, and for whom to produce"</li>
+                <li><strong>1.3 Production Possibilities Curve</strong>Drawing and interpreting the PPC; opportunity cost, efficiency, growth</li>
+                <li><strong>1.4 Comparative Advantage and Trade</strong>Absolute vs. comparative advantage; gains from specialization and trade</li>
+                <li><strong>1.5 Cost-Benefit Analysis</strong>The decision rule: act when marginal benefit ≥ marginal cost</li>
+                <li><strong>1.6 Marginal Analysis and Consumer Choice</strong>Diminishing marginal utility; utility maximization MU₁/P₁ = MU₂/P₂</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 2 · Supply and Demand</h3><span class="pct">20–25%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">The core analytical toolkit of microeconomics, on which all later market analysis is built.</p>
+              <ul class="topic-list">
+                <li><strong>2.1 Demand</strong>Law of demand; downward-sloping demand curve; change in demand vs. quantity demanded</li>
+                <li><strong>2.2 Supply</strong>Law of supply; upward-sloping supply curve; change in supply vs. quantity supplied</li>
+                <li><strong>2.3 Price Elasticity of Demand</strong>Midpoint formula; elastic, inelastic, unit elastic; elasticity and total revenue</li>
+                <li><strong>2.4 Price Elasticity of Supply</strong>Formula; types of elasticity; factors affecting supply elasticity</li>
+                <li><strong>2.5 Other Elasticities</strong>Cross-price elasticity; income elasticity</li>
+                <li><strong>2.6 Market Equilibrium and Surplus</strong>Determining equilibrium; consumer and producer surplus</li>
+                <li><strong>2.7 Market Disequilibrium and Changes in Equilibrium</strong>Shortages and surpluses; effects of shifts on price and quantity</li>
+                <li><strong>2.8 Government Intervention</strong>Price ceilings and floors; taxes and subsidies; deadweight loss; tax incidence</li>
+                <li><strong>2.9 International Trade and Public Policy</strong>Tariffs and quotas; effects of trade on surplus</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 3 · Production, Cost, and the Perfect Competition Model</h3><span class="pct">22–25%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Starts from firm production decisions, builds the cost curves, and derives short- and long-run equilibrium under perfect competition.</p>
+              <ul class="topic-list">
+                <li><strong>3.1 The Production Function</strong>Short-run production; total, marginal, and average product; diminishing marginal returns</li>
+                <li><strong>3.2 Short-Run Production Costs</strong>Fixed, variable, and total cost; marginal, average total, average variable, average fixed cost</li>
+                <li><strong>3.3 Long-Run Production Costs</strong>Economies and diseconomies of scale; LRATC; minimum efficient scale</li>
+                <li><strong>3.4 Types of Profit</strong>Accounting vs. economic profit; explicit and implicit costs; normal profit</li>
+                <li><strong>3.5 Profit Maximization</strong>Profit-maximizing rule MR = MC</li>
+                <li><strong>3.6 Short-Run and Long-Run Decisions</strong>Shutdown point (P &lt; min AVC); break-even (P = min ATC); entry and exit</li>
+                <li><strong>3.7 Perfect Competition</strong>Market characteristics; horizontal demand curve; short- and long-run equilibrium; allocative and productive efficiency</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 4 · Imperfect Competition</h3><span class="pct">15–22%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Analyzes monopoly, monopolistic competition, and oligopoly — how firms use market power to price and the resulting efficiency losses.</p>
+              <ul class="topic-list">
+                <li><strong>4.1 Introduction to Imperfectly Competitive Markets</strong>Types of imperfect competition; barriers to entry; P &gt; MC → allocative inefficiency</li>
+                <li><strong>4.2 Monopoly</strong>Causes of monopoly; MR &lt; P; profit max MR = MC; monopoly price and quantity; deadweight loss; natural monopoly</li>
+                <li><strong>4.3 Price Discrimination</strong>Conditions; perfect price discrimination: P = MC, zero consumer surplus</li>
+                <li><strong>4.4 Monopolistic Competition</strong>Product differentiation; short- and long-run equilibrium; zero long-run economic profit; excess capacity</li>
+                <li><strong>4.5 Oligopoly and Game Theory</strong>Interdependence; collusion and cartels; dominant strategy; Nash equilibrium; prisoner's dilemma</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 5 · Factor Markets</h3><span class="pct">10–13%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Applies supply and demand to labor and other factor markets — how firms decide how much to hire and what wage to pay.</p>
+              <ul class="topic-list">
+                <li><strong>5.1 Introduction to Factor Markets</strong>Derived demand; marginal revenue product (MRP); marginal factor cost (MFC)</li>
+                <li><strong>5.2 Changes in Factor Demand and Supply</strong>Factors shifting factor demand and supply; equilibrium wage and employment</li>
+                <li><strong>5.3 Profit-Maximizing Behavior in Perfectly Competitive Factor Markets</strong>Hiring rule MRP = MFC; labor market equilibrium</li>
+                <li><strong>5.4 Monopsonistic Markets</strong>Monopsony characteristics; MFC &gt; wage; lower wage and employment than competitive; deadweight loss</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 6 · Market Failure and Government</h3><span class="pct">8–13%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Analyzes when markets fail to achieve efficiency and how government intervention can correct it.</p>
+              <ul class="topic-list">
+                <li><strong>6.1 Efficient and Inefficient Outcomes</strong>Social optimum MSB = MSC; types of market failure; deadweight loss</li>
+                <li><strong>6.2 Externalities</strong>Negative (pollution) and positive (education) externalities; corrective taxes and subsidies</li>
+                <li><strong>6.3 Public and Private Goods</strong>Excludability and rivalry; public goods; free-rider problem; common resources; tragedy of the commons</li>
+                <li><strong>6.4 Government Intervention in Different Market Structures</strong>Effects of taxes, subsidies, and price controls in different structures; antitrust policy</li>
+                <li><strong>6.5 Inequality</strong>Measuring income and wealth inequality; Lorenz curve and Gini coefficient; redistribution policy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-bottom">
+        <div class="ced-box">
+          <div class="info"><h4>📄 Download CED</h4><p>College Board Course and Exam Description</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-microeconomics-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+        <div class="option-grid">
+          <a href="micro-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>Past exam papers</p></a>
+          <a href="micro-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB Question Bank</h3><p>College Board question bank</p></a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -75,6 +221,5 @@
       Content is free for learning use. Reproduction or commercial use is prohibited.
     </div>
   </footer>
-
 </body>
 </html>
