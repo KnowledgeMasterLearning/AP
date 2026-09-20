@@ -1,1 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>统计学 · CB 题库 | Knowledge Master</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .unit-block {
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .unit-block-head {
+      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
+      color: #fff;
+      padding: 16px 24px;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .unit-block-head .new-unit {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 3px 12px;
+      border-radius: 999px;
+    }
+    .topic-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f1eaf8;
+      flex-wrap: wrap;
+    }
+    .topic-row:last-child { border-bottom: none; }
+    .topic-row .topic-name {
+      flex: 1;
+      min-width: 200px;
+      color: #1e293b;
+      font-size: 0.95rem;
+    }
+    .topic-row .btns {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .btn-q, .btn-a {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-q { background: #660099; color: #fff; }
+    .btn-q:hover { background: #4a0072; }
+    .btn-a {
+      background: #f3e8ff;
+      color: #4a0072;
+      border: 1px solid #e9d5ff;
+    }
+    .btn-a:hover { background: #e9d5ff; }
 
+    @media (max-width: 600px) {
+      .topic-row { flex-direction: column; align-items: flex-start; }
+      .topic-row .btns { width: 100%; }
+      .btn-q, .btn-a { flex: 1; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Knowledge Master</a>
+      <nav>
+        <a href="index.html">首页</a>
+        <a href="courses.html" class="active">课程</a>
+        <a href="about.html">关于我</a>
+        <a href="../en/stats-cb-bank.html" class="lang-switch">EN</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>统计学 · CB 题库</h1>
+      <p>Statistics · College Board Question Bank</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <p style="margin-bottom:28px;">
+        <a href="statistics.html" style="color:#660099;text-decoration:none;">← 返回统计学</a>
+      </p>
+
+      <!-- 说明 -->
+      <div style="background:#f3e8ff;border-left:4px solid #660099;border-radius:0 10px 10px 0;padding:14px 20px;color:#64748b;font-size:0.9rem;margin-bottom:28px;line-height:1.8;">
+        <strong>说明</strong>：题库按<strong>旧版（9 单元）</strong>整理，
+        每个单元标注其对应的<strong>新版（5 单元）</strong>归属，方便对照使用。
+      </div>
+
+      <!-- ===== 旧 Unit 1 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 1 · Exploring One-Variable Data
+          <span class="new-unit">旧版 Unit 1 → 新版 Unit 1</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 2 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 2 · Exploring Two-Variable Data
+          <span class="new-unit">旧版 Unit 2 → 新版 Unit 2 + Unit 5</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 3 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 3 · Collecting Data
+          <span class="new-unit">旧版 Unit 3 → 新版 Unit 1</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 4 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 4 · Probability, Random Variables
+          <span class="new-unit">旧版 Unit 4 → 新版 Unit 2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part C</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 5 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 5 · Sampling Distributions
+          <span class="new-unit">旧版 Unit 5 → 新版 Unit 2 + Unit 3 + Unit 4</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part C</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 6 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 6 · Inference for Categorical Data: Proportions
+          <span class="new-unit">旧版 Unit 6 → 新版 Unit 3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part C</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part D</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 7 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 7 · Inference for Quantitative Data: Means
+          <span class="new-unit">旧版 Unit 7 → 新版 Unit 4</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part C</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 8 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 8 · Inference for Categorical Data: Chi-Square
+          <span class="new-unit">旧版 Unit 8 → 新版 Unit 3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 旧 Unit 9 ===== -->
+      <div class="unit-block">
+        <div class="unit-block-head">
+          Unit 9 · Inference for Quantitative Data: Slopes
+          <span class="new-unit">旧版 Unit 9 → 新版 Unit 5</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part A</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Progress Check MCQ Part B</span>
+          <div class="btns">
+            <a href="#" class="btn-q" target="_blank" rel="noopener">题目</a>
+            <a href="#" class="btn-a" target="_blank" rel="noopener">答案</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2025 Knowledge Master | 学者同行 · 保留所有权利<br>
+      本站内容免费供学习使用，未经许可不得转载或商用。
+    </div>
+  </footer>
+
+</body>
+</html>
