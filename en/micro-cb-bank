@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microeconomics · CB Question Bank | Knowledge Master</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .unit-block {
+      background: #fff;
+      border: 1px solid #ede4f7;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .unit-block-head {
+      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
+      color: #fff;
+      padding: 16px 24px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .unit-block-head small {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+    .topic-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f1eaf8;
+      flex-wrap: wrap;
+    }
+    .topic-row:last-child { border-bottom: none; }
+    .topic-row .topic-name {
+      flex: 1;
+      min-width: 200px;
+      color: #1e293b;
+      font-size: 0.96rem;
+    }
+    .topic-row .btns {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .btn-q, .btn-a {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-q { background: #660099; color: #fff; }
+    .btn-q:hover { background: #4a0072; }
+    .btn-a {
+      background: #f3e8ff;
+      color: #4a0072;
+      border: 1px solid #e9d5ff;
+    }
+    .btn-a:hover { background: #e9d5ff; }
+
+    @media (max-width: 600px) {
+      .topic-row { flex-direction: column; align-items: flex-start; }
+      .topic-row .btns { width: 100%; }
+      .btn-q, .btn-a { flex: 1; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Knowledge Master</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="about.html">About</a>
+        <a href="../zh/micro-cb-bank.html" class="lang-switch">中文</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Microeconomics · CB Question Bank</h1>
+      <p>College Board Question Bank</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <p style="margin-bottom:28px;">
+        <a href="microeconomics.html" style="color:#660099;text-decoration:none;">← Back to Microeconomics</a>
+      </p>
+
+      <!-- Unit 1 -->
+      <div class="unit-block">
+        <div class="unit-block-head">Unit 1 · Basic Economic Concepts</div>
+        <div class="topic-row">
+          <span class="topic-name">Basic Concepts</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit1-basic-concepts.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit1-basic-concepts-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">PPF &amp; Absolute Advantage</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit1-ppf.absolute.advantage.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit1-ppf.absolute.advantage-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 2 -->
+      <div class="unit-block">
+        <div class="unit-block-head">Unit 2 · Supply and Demand</div>
+        <div class="topic-row">
+          <span class="topic-name">Supply &amp; Demand</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit2-S.D.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit2-S.D-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 3 -->
+      <div class="unit-block">
+        <div class="unit-block-head">Unit 3 · Production, Cost, and Perfect Competition</div>
+        <div class="topic-row">
+          <span class="topic-name">Marginal Analysis</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit3-marginal-analysis.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit3-marginal-analysis-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Production Function · FRQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit3-production-function-frq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit3-production-function-frq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Production Function · MCQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit3-production-function-mcq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit3-production-function-mcq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 4 -->
+      <div class="unit-block">
+        <div class="unit-block-head">Unit 4 · Imperfect Competition</div>
+        <div class="topic-row">
+          <span class="topic-name">Monopolistic Competition · FRQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-mono-comp-frq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-mono-comp-frq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Monopolistic Competition · MCQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-mono-comp-mcq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-mono-comp-mcq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Monopoly · FRQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-monopoly-frq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-monopoly-frq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Monopoly · MCQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-monopoly-mcq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-monopoly-mcq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Oligopoly · FRQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-oligopoly-frq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-oligopoly-frq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Oligopoly · MCQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-oligopoly-mcq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-oligopoly-mcq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Perfectly Competitive · FRQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-perfectly-competitive-frq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-perfectly-competitive-frq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Perfectly Competitive · MCQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-perfectly-competitive-mcq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-perfectly-competitive-mcq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Price Discrimination</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-Price-Discrimination.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit4-Price-Discrimination-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 5 -->
+      <div class="unit-block">
+        <div class="unit-block-head">Unit 5 · Factor Markets</div>
+        <div class="topic-row">
+          <span class="topic-name">Factor Market · FRQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit5-factor-market-frq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit5-factor-market-frq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Factor Market · MCQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit5-factor-market-mcq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit5-factor-market-mcq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 6 -->
+      <div class="unit-block">
+        <div class="unit-block-head">Unit 6 · Market Failure and Government</div>
+        <div class="topic-row">
+          <span class="topic-name">Externality · FRQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit6-externality-frq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit6-externality-frq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Externality · MCQ</span>
+          <div class="btns">
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit6-externality-mcq.pdf" class="btn-q" target="_blank" rel="noopener">Questions</a>
+            <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/CB-bank/micro-unit6-externality-mcq-ans.pdf" class="btn-a" target="_blank" rel="noopener">Answers</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2025 Knowledge Master · All rights reserved.<br>
+      Content is free for learning use. Reproduction or commercial use is prohibited.
+    </div>
+  </footer>
+
+</body>
+</html>
