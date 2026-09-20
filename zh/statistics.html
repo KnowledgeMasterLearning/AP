@@ -6,310 +6,58 @@
   <title>统计学 | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    /* ===== 上半部：左标题 + 右视频 ===== */
-    .course-top {
-      display: flex;
-      gap: 40px;
-      align-items: stretch;
-      flex-wrap: wrap;
-      padding: 40px 0 0;
-    }
-    .course-left {
-      flex: 1 1 380px;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .course-left .cn {
-      font-size: 3.4rem;
-      font-weight: 800;
-      color: #4a0072;
-      line-height: 1.2;
-      margin: 0;
-      letter-spacing: 2px;
-    }
-    .course-left .en {
-      font-size: 1.6rem;
-      color: #660099;
-      opacity: 0.7;
-      margin: 16px 0 0;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-    .course-right {
-      flex: 1 1 420px;
-      min-width: 300px;
-      display: flex;
-      align-items: center;
-    }
-    .video-box {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
-      border: 3px solid #000;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 1rem;
-      overflow: hidden;
-    }
-    .video-box iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* ===== 课程介绍整体 ===== */
-    .course-desc {
-      margin-top: 72px;
-      background: #faf7fd;
-      border: 1px solid #ede4f7;
-      border-radius: 20px;
-      padding: 48px 44px;
-    }
-    .desc-title {
-      text-align: center;
-      margin-bottom: 36px;
-      padding-bottom: 24px;
-      border-bottom: 1px dashed #e2d4f0;
-    }
-    .desc-title h2 {
-      font-size: 1.9rem;
-      color: #4a0072;
-      margin: 0;
-    }
-    .desc-title p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      margin-top: 8px;
-      letter-spacing: 1px;
-    }
-    .desc-intro {
-      max-width: 760px;
-      margin: 0 auto 40px;
-      text-align: center;
-      color: #64748b;
-      line-height: 2;
-      font-size: 1.02rem;
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 14px;
-      padding: 26px 32px;
-    }
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-left .en { font-size: 1.6rem; color: #660099; opacity: 0.7; margin: 16px 0 0; font-weight: 500; letter-spacing: 1px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
     .desc-intro strong { color: #4a0072; }
-
-    /* 单元占比总览 */
     .units-overview { margin-top: 8px; }
-    .units-overview h3 {
-      font-size: 1.35rem;
-      color: #4a0072;
-      margin-bottom: 20px;
-      padding-left: 14px;
-      border-left: 5px solid #660099;
-    }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
     .weight-list { display: grid; gap: 12px; }
-    .weight-row {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 12px;
-      padding: 14px 20px;
-    }
-    .weight-row .unit-tag {
-      flex-shrink: 0;
-      font-weight: 700;
-      color: #660099;
-      font-size: 0.95rem;
-      min-width: 62px;
-    }
-    .weight-row .unit-name {
-      flex: 1;
-      color: #1e293b;
-      font-size: 0.98rem;
-    }
-    .weight-row .unit-pct {
-      flex-shrink: 0;
-      background: #660099;
-      color: #fff;
-      font-size: 0.82rem;
-      padding: 4px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-    .weight-note {
-      margin-top: 16px;
-      background: #f3e8ff;
-      border-left: 4px solid #660099;
-      border-radius: 0 10px 10px 0;
-      padding: 14px 20px;
-      color: #64748b;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    /* ===== 各单元卡片 ===== */
-    .unit-cards {
-      margin-top: 48px;
-      display: grid;
-      gap: 28px;
-    }
-    .unit-card {
-      background: #fff;
-      border: 1px solid #ede4f7;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: box-shadow 0.25s;
-    }
-    .unit-card:hover {
-      box-shadow: 0 12px 32px rgba(102,0,153,0.1);
-    }
-    .unit-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      background: linear-gradient(135deg, #660099 0%, #4a0072 100%);
-      color: #fff;
-      padding: 18px 26px;
-      flex-wrap: wrap;
-    }
-    .unit-head .title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 0;
-      line-height: 1.5;
-    }
-    .unit-head .title small {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 400;
-      opacity: 0.8;
-      margin-top: 2px;
-    }
-    .unit-head .pct {
-      flex-shrink: 0;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 5px 16px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .title small { display: block; font-size: 0.82rem; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
     .unit-body { padding: 24px 26px 28px; }
-    .unit-body .unit-desc {
-      color: #64748b;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding-bottom: 18px;
-      border-bottom: 1px dashed #ede4f7;
-      line-height: 1.8;
-    }
-    .topic-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 14px;
-    }
-    .topic-list li {
-      line-height: 1.8;
-      color: #475569;
-      font-size: 0.94rem;
-      padding-left: 16px;
-      border-left: 3px solid #ede9fe;
-    }
-    .topic-list li strong {
-      color: #4a0072;
-      display: block;
-      margin-bottom: 2px;
-      font-size: 0.96rem;
-    }
-
-    /* ===== 下方区域 ===== */
-    .course-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-      margin-top: 64px;
-    }
-    .ced-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 24px 28px;
-      flex-wrap: wrap;
-      gap: 16px;
-      transition: all 0.2s;
-    }
-    .ced-box:hover {
-      border-color: #660099;
-      box-shadow: 0 6px 18px rgba(102,0,153,0.1);
-    }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
     .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
     .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
-
-    .option-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-    }
-    .option-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 36px 28px;
-      text-align: center;
-      transition: all 0.3s;
-      background: #fff;
-    }
-    .option-card:hover {
-      border-color: #660099;
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(102,0,153,0.15);
-    }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
     .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
     .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
     .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
-
-    .download-btn {
-      flex-shrink: 0;
-      padding: 10px 24px;
-      background: #660099;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.92rem;
-      transition: background 0.2s;
-    }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
     .download-btn:hover { background: #4a0072; }
-
-    @media (max-width: 700px) {
-      .course-left .cn { font-size: 2.4rem; }
-      .course-left .en { font-size: 1.2rem; }
-    }
-    @media (max-width: 600px) {
-      .course-desc { padding: 28px 20px; }
-      .option-grid { grid-template-columns: 1fr; }
-      .unit-head { flex-direction: column; align-items: flex-start; }
-      .weight-row { flex-wrap: wrap; }
-    }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } .course-left .en { font-size: 1.2rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
   </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -324,8 +72,6 @@
 
   <section class="section">
     <div class="container">
-
-      <!-- 上半部：左标题 + 右视频 -->
       <div class="course-top">
         <div class="course-left">
           <h1 class="cn">统计学</h1>
@@ -333,7 +79,7 @@
         </div>
         <div class="course-right">
           <div class="video-box">
-            视频占位
+            <img src="../images/stats-pic.png" alt="统计学">
             <!--
             <iframe src="https://player.bilibili.com/player.html?bvid=你的BV号&p=1"
                     scrolling="no" border="0" frameborder="no"
@@ -343,49 +89,24 @@
         </div>
       </div>
 
-      <!-- ===== 课程介绍 ===== -->
       <div class="course-desc">
-
         <div class="desc-title">
           <h2>课程介绍</h2>
           <p>AP STATISTICS · COURSE OVERVIEW</p>
         </div>
-
         <div class="desc-intro">
           AP 统计学课程共分为 <strong>5 个单元</strong>，围绕四个核心概念展开：
           <strong>数据探索</strong>、<strong>概率与随机变量</strong>、
           <strong>统计推断</strong>、<strong>变量间关系</strong>。
         </div>
-
-        <!-- 单元占比总览 -->
         <div class="units-overview">
           <h3>单元分布与考试占比</h3>
           <div class="weight-list">
-            <div class="weight-row">
-              <span class="unit-tag">Unit 1</span>
-              <span class="unit-name">Exploring One-Variable Data and Collecting Data 单变量数据探索与数据收集</span>
-              <span class="unit-pct">20–30%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 2</span>
-              <span class="unit-name">Probability, Random Variables, and Probability Distributions 概率、随机变量与概率分布</span>
-              <span class="unit-pct">15–25%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 3</span>
-              <span class="unit-name">Inference for Categorical Data: Proportions 分类数据的推断：比例</span>
-              <span class="unit-pct">15–25%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 4</span>
-              <span class="unit-name">Inference for Quantitative Data: Means 定量数据的推断：均值</span>
-              <span class="unit-pct">10–20%</span>
-            </div>
-            <div class="weight-row">
-              <span class="unit-tag">Unit 5</span>
-              <span class="unit-name">Regression Analysis 回归分析</span>
-              <span class="unit-pct">10–20%</span>
-            </div>
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">Exploring One-Variable Data and Collecting Data 单变量数据探索与数据收集</span><span class="unit-pct">20–30%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">Probability, Random Variables, and Probability Distributions 概率、随机变量与概率分布</span><span class="unit-pct">15–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">Inference for Categorical Data: Proportions 分类数据的推断：比例</span><span class="unit-pct">15–25%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Inference for Quantitative Data: Means 定量数据的推断：均值</span><span class="unit-pct">10–20%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Regression Analysis 回归分析</span><span class="unit-pct">10–20%</span></div>
           </div>
           <div class="weight-note">
             <strong>说明</strong>：Unit 1 占比最高（20–30%），是整个课程的基础。
@@ -393,16 +114,9 @@
             是统计推断的核心部分，也是 FRQ 的高频考点。
           </div>
         </div>
-
-        <!-- 各单元卡片 -->
         <div class="unit-cards">
-
-          <!-- Unit 1 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 1 · Exploring One-Variable Data and Collecting Data<small>单变量数据探索与数据收集</small></h3>
-              <span class="pct">20–30%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 1 · Exploring One-Variable Data and Collecting Data<small>单变量数据探索与数据收集</small></h3><span class="pct">20–30%</span></div>
             <div class="unit-body">
               <p class="unit-desc">建立统计思维方式和数据分析基础，同时涵盖数据收集的方法。</p>
               <ul class="topic-list">
@@ -422,13 +136,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 2 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 2 · Probability, Random Variables, and Probability Distributions<small>概率、随机变量与概率分布</small></h3>
-              <span class="pct">15–25%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 2 · Probability, Random Variables, and Probability Distributions<small>概率、随机变量与概率分布</small></h3><span class="pct">15–25%</span></div>
             <div class="unit-body">
               <p class="unit-desc">建立概率论基础，是后续统计推断的理论支撑。</p>
               <ul class="topic-list">
@@ -447,13 +156,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 3 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 3 · Inference for Categorical Data: Proportions<small>分类数据的推断：比例</small></h3>
-              <span class="pct">15–25%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 3 · Inference for Categorical Data: Proportions<small>分类数据的推断：比例</small></h3><span class="pct">15–25%</span></div>
             <div class="unit-body">
               <p class="unit-desc">聚焦于单样本和双样本比例问题的统计推断。</p>
               <ul class="topic-list">
@@ -475,13 +179,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 4 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 4 · Inference for Quantitative Data: Means<small>定量数据的推断：均值</small></h3>
-              <span class="pct">10–20%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 4 · Inference for Quantitative Data: Means<small>定量数据的推断：均值</small></h3><span class="pct">10–20%</span></div>
             <div class="unit-body">
               <p class="unit-desc">聚焦于单样本和双样本均值问题的统计推断。</p>
               <ul class="topic-list">
@@ -498,13 +197,8 @@
               </ul>
             </div>
           </div>
-
-          <!-- Unit 5 -->
           <div class="unit-card">
-            <div class="unit-head">
-              <h3 class="title">Unit 5 · Regression Analysis<small>回归分析</small></h3>
-              <span class="pct">10–20%</span>
-            </div>
+            <div class="unit-head"><h3 class="title">Unit 5 · Regression Analysis<small>回归分析</small></h3><span class="pct">10–20%</span></div>
             <div class="unit-body">
               <p class="unit-desc">研究两个定量变量之间的关系，建立并评估线性回归模型。</p>
               <ul class="topic-list">
@@ -516,42 +210,19 @@
               </ul>
             </div>
           </div>
-
         </div>
-
       </div>
 
-      <!-- 下方区域 -->
       <div class="course-bottom">
-
         <div class="ced-box">
-          <div class="info">
-            <h4>📄 下载 CED</h4>
-            <p>College Board 官方课程与考试说明</p>
-          </div>
-          <a href="https://apcentral.collegeboard.org/media/pdf/ap-statistics-course-and-exam-description.pdf"
-             class="download-btn"
-             target="_blank"
-             rel="noopener">
-            下载
-          </a>
+          <div class="info"><h4>📄 下载 CED</h4><p>College Board 官方课程与考试说明</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-statistics-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">下载</a>
         </div>
-
         <div class="option-grid">
-          <a href="stats-past-papers.html" class="option-card">
-            <div class="icon">📄</div>
-            <h3>Past Papers</h3>
-            <p>往年真题试卷</p>
-          </a>
-          <a href="stats-cb-bank.html" class="option-card">
-            <div class="icon">📝</div>
-            <h3>CB 题库</h3>
-            <p>College Board 官方题库</p>
-          </a>
+          <a href="stats-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>往年真题试卷</p></a>
+          <a href="stats-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB 题库</h3><p>College Board 官方题库</p></a>
         </div>
-
       </div>
-
     </div>
   </section>
 
@@ -561,6 +232,5 @@
       本站内容免费供学习使用，未经许可不得转载或商用。
     </div>
   </footer>
-
 </body>
 </html>
