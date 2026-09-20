@@ -81,7 +81,8 @@
       border-color: #660099;
     }
 
-    #wechatModal {
+    /* 弹窗（微信 + B站共用） */
+    #wechatModal, #biliModal {
       display: none;
       position: fixed;
       inset: 0;
@@ -91,7 +92,7 @@
       z-index: 999;
       padding: 20px;
     }
-    #wechatModal.show { display: flex; }
+    #wechatModal.show, #biliModal.show { display: flex; }
     .wechat-box {
       background: #fff;
       padding: 30px 36px;
@@ -176,9 +177,10 @@
           </p>
 
           <div class="contact-list">
-            <a href="mailto:your@email.com">✉️ 邮箱</a>
+            <a href="mailto:samueldongmail@163.com">✉️ 邮箱</a>
             <a href="#" id="wechatBtn">💬 微信</a>
-            <a href="https://space.bilibili.com/你的UID" target="_blank" rel="noopener">📺 B站</a>
+            <a href="https://xhslink.cn/o/9LXZbcTPIWC" target="_blank" rel="noopener">📕 小红书</a>
+            <a href="#" id="biliBtn">📺 B站（整理中）</a>
           </div>
 
         </div>
@@ -186,11 +188,23 @@
     </section>
   </div>
 
+  <!-- 微信弹窗 -->
   <div id="wechatModal">
     <div class="wechat-box">
       <img src="../images/wechat-qr.png" alt="微信二维码">
       <p>扫码添加微信</p>
       <button id="wechatClose">关闭</button>
+    </div>
+  </div>
+
+  <!-- B站提示弹窗 -->
+  <div id="biliModal">
+    <div class="wechat-box">
+      <p style="font-size:1rem;color:#4a0072;margin:0;line-height:1.9;">
+        📺 B站账号还在整理中<br>
+        暂时无法查看，敬请期待
+      </p>
+      <button id="biliClose">知道了</button>
     </div>
   </div>
 
@@ -202,21 +216,34 @@
   </footer>
 
   <script>
+    // 微信
     const wechatBtn = document.getElementById('wechatBtn');
     const wechatModal = document.getElementById('wechatModal');
     const wechatClose = document.getElementById('wechatClose');
-
-    wechatBtn.addEventListener('click', function(e) {
+    wechatBtn.addEventListener('click', e => {
       e.preventDefault();
       wechatModal.classList.add('show');
     });
-    wechatClose.addEventListener('click', function() {
+    wechatClose.addEventListener('click', () => {
       wechatModal.classList.remove('show');
     });
-    wechatModal.addEventListener('click', function(e) {
-      if (e.target === wechatModal) {
-        wechatModal.classList.remove('show');
-      }
+    wechatModal.addEventListener('click', e => {
+      if (e.target === wechatModal) wechatModal.classList.remove('show');
+    });
+
+    // B站
+    const biliBtn = document.getElementById('biliBtn');
+    const biliModal = document.getElementById('biliModal');
+    const biliClose = document.getElementById('biliClose');
+    biliBtn.addEventListener('click', e => {
+      e.preventDefault();
+      biliModal.classList.add('show');
+    });
+    biliClose.addEventListener('click', () => {
+      biliModal.classList.remove('show');
+    });
+    biliModal.addEventListener('click', e => {
+      if (e.target === biliModal) biliModal.classList.remove('show');
     });
   </script>
 
