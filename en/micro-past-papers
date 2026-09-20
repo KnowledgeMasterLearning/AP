@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microeconomics · Past Papers | Knowledge Master</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Knowledge Master</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="about.html">About</a>
+        <a href="../zh/micro-past-papers.html" class="lang-switch">中文</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Microeconomics · Past Papers</h1>
+      <p>Past exam papers (questions + answers)</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <p style="margin-bottom:28px;">
+        <a href="microeconomics.html" style="color:#660099;text-decoration:none;">← Back to Microeconomics</a>
+      </p>
+
+      <div class="download-list">
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2019 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2019.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2018 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2018.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2017 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2017.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2016 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2016.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2015 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2015.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2014 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2014.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2013 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2013.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+        <div class="download-item">
+          <div class="info">
+            <h4>📄 2012 Past Paper</h4>
+            <p>Full set (questions + answers)</p>
+          </div>
+          <a href="https://github.com/KnowledgeMasterLearning/knowledge-master/releases/download/Past-exam-Full-Set/micro-fullset-question-answer-2012.pdf"
+             class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2025 Knowledge Master · All rights reserved.<br>
+      Content is free for learning use. Reproduction or commercial use is prohibited.
+    </div>
+  </footer>
+
+</body>
+</html>
