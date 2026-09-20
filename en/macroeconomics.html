@@ -5,9 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Macroeconomics | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-left .en { font-size: 1.6rem; color: #660099; opacity: 0.7; margin: 16px 0 0; font-weight: 500; letter-spacing: 1px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
+    .desc-intro strong { color: #4a0072; }
+    .units-overview { margin-top: 8px; }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
+    .weight-list { display: grid; gap: 12px; }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .title small { display: block; font-size: 0.82rem; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+    .unit-body { padding: 24px 26px 28px; }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
+    .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
+    .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
+    .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
+    .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
+    .download-btn:hover { background: #4a0072; }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
+  </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -15,52 +65,153 @@
         <a href="index.html">Home</a>
         <a href="courses.html" class="active">Courses</a>
         <a href="about.html">About</a>
-        <a href="../zh/index.html" class="lang-switch">中文</a>
+        <a href="../zh/macroeconomics.html" class="lang-switch">中文</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>Macroeconomics</h1>
-      <p>AP Macroeconomics</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
-      <div class="course-intro">
-        [Course introduction placeholder] This section will introduce the
-        content, exam focus, and study tips for AP Macroeconomics.
+      <div class="course-top">
+        <div class="course-left">
+          <h1 class="cn">Macroeconomics</h1>
+        </div>
+        <div class="course-right">
+          <div class="video-box">
+            <img src="../images/macro-pic.png" alt="Macroeconomics">
+          </div>
+        </div>
       </div>
-      <div class="download-section">
-        <h2>📥 Downloads</h2>
-        <div class="download-list">
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Notes (PDF)</h4>
-              <p>Course notes and key concepts</p>
-            </div>
-            <a href="../files/macro-notes.pdf" class="download-btn" download>Download</a>
+      <div class="course-desc">
+        <div class="desc-title">
+          <h2>Course Overview</h2>
+          <p>AP MACROECONOMICS · COURSE OVERVIEW</p>
+        </div>
+        <div class="desc-intro">
+          AP Macroeconomics is divided into <strong>6 units</strong>, built around four core concepts:
+          <strong>Measuring Economic Performance</strong>,
+          <strong>Economic Fluctuations and Stabilization Policies</strong>,
+          <strong>Financial Sector and Monetary Policy</strong>,
+          <strong>Open Economy and International Finance</strong>.
+        </div>
+        <div class="units-overview">
+          <h3>Units and Exam Weighting</h3>
+          <div class="weight-list">
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">Basic Economic Concepts</span><span class="unit-pct">5–10%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">Economic Indicators and the Business Cycle</span><span class="unit-pct">12–17%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">National Income and Price Determination</span><span class="unit-pct">17–27%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Financial Sector</span><span class="unit-pct">18–23%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Long-Run Consequences of Stabilization Policies</span><span class="unit-pct">20–30%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 6</span><span class="unit-name">Open Economy—International Trade and Finance</span><span class="unit-pct">10–13%</span></div>
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Past Papers (PDF)</h4>
-              <p>Includes past exam papers</p>
-            </div>
-            <a href="../files/macro-past-papers.pdf" class="download-btn" download>Download</a>
+          <div class="weight-note">
+            <strong>Note</strong>: Units 3, 4, and 5 together account for about <strong>55–80%</strong> of the exam.
+            Units 4 and 5 alone make up nearly half — prioritize them.
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 CB Question Bank (PDF)</h4>
-              <p>College Board official question bank</p>
+        </div>
+        <div class="unit-cards">
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 1 · Basic Economic Concepts</h3><span class="pct">5–10%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Establishes the analytical foundation of macroeconomics — scarcity, opportunity cost, and comparative advantage.</p>
+              <ul class="topic-list">
+                <li><strong>1.1 Scarcity</strong>Limited resources vs. unlimited wants; the fundamental economic problem</li>
+                <li><strong>1.2 Opportunity Cost and the PPC</strong>Drawing and interpreting the PPC; opportunity cost, efficiency, growth</li>
+                <li><strong>1.3 Comparative Advantage and Gains from Trade</strong>Absolute vs. comparative advantage; gains from specialization; terms of trade</li>
+                <li><strong>1.4 Demand</strong>Law of demand; downward-sloping demand curve; change in demand vs. quantity demanded</li>
+                <li><strong>1.5 Supply</strong>Law of supply; upward-sloping supply curve; change in supply vs. quantity supplied</li>
+                <li><strong>1.6 Market Equilibrium, Disequilibrium, and Changes</strong>Determining equilibrium; shortages and surpluses; effects of shifts</li>
+              </ul>
             </div>
-            <a href="../files/macro-cb-bank.pdf" class="download-btn" download>Download</a>
           </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 2 · Economic Indicators and the Business Cycle</h3><span class="pct">12–17%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">How to measure a nation's economic performance — GDP, unemployment, and inflation.</p>
+              <ul class="topic-list">
+                <li><strong>2.1 The Circular Flow and GDP</strong>Definition of GDP; circular flow; three methods of measuring GDP; nominal GDP</li>
+                <li><strong>2.2 Limitations of GDP</strong>GDP does not count non-market transactions, underground economy, environmental quality, or quality of life</li>
+                <li><strong>2.3 Unemployment</strong>Labor force, unemployment rate, labor force participation; types (frictional, structural, cyclical); natural rate</li>
+                <li><strong>2.4 Price Indices and Inflation</strong>CPI definition and calculation; inflation rate; real variables; CPI biases</li>
+                <li><strong>2.5 Costs of Inflation</strong>Unanticipated inflation's effects on borrowers and lenders; menu costs; shoe-leather costs</li>
+                <li><strong>2.6 Real v. Nominal GDP</strong>Difference between nominal and real GDP; GDP deflator</li>
+                <li><strong>2.7 Business Cycles</strong>Phases (expansion, recession) and turning points (peak, trough); output gap; potential GDP</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 3 · National Income and Price Determination</h3><span class="pct">17–27%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Builds the AD-AS model to analyze economic fluctuations and short-run stabilization policy.</p>
+              <ul class="topic-list">
+                <li><strong>3.1 Aggregate Demand (AD)</strong>Definition and downward slope (wealth, interest rate, exchange rate effects); shifters of AD</li>
+                <li><strong>3.2 Multipliers</strong>Spending and tax multipliers; MPC and MPS</li>
+                <li><strong>3.3 Short-Run Aggregate Supply (SRAS)</strong>Definition and upward slope (sticky wages); shifters of SRAS</li>
+                <li><strong>3.4 Long-Run Aggregate Supply (LRAS)</strong>Vertical LRAS; potential GDP; short-run vs. long-run</li>
+                <li><strong>3.5 Equilibrium in the AD-AS Model</strong>Short-run and long-run equilibrium; recessionary and inflationary gaps</li>
+                <li><strong>3.6 Changes in the AD-AS Model</strong>Demand and supply shocks; demand-pull and cost-push inflation</li>
+                <li><strong>3.7 Long-Run Self-Adjustment</strong>Flexible wages and prices restore full employment</li>
+                <li><strong>3.8 Fiscal Policy</strong>Expansionary and contractionary fiscal policy; government spending and taxes on AD; lags</li>
+                <li><strong>3.9 Automatic Stabilizers</strong>Progressive income tax and transfer payments stabilize the economy</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 4 · Financial Sector</h3><span class="pct">18–23%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Money, banking, and how central banks use monetary policy to influence the economy.</p>
+              <ul class="topic-list">
+                <li><strong>4.1 Financial Assets</strong>Definition and types; stocks vs. bonds</li>
+                <li><strong>4.2 Nominal v. Real Interest Rates</strong>Fisher equation; difference between nominal and real rates</li>
+                <li><strong>4.3 Definition, Measurement, and Functions of Money</strong>Three functions of money; M1 and M2; monetary base</li>
+                <li><strong>4.4 Banking and the Expansion of the Money Supply</strong>Balance sheets; required and excess reserves; money multiplier; money creation</li>
+                <li><strong>4.5 The Money Market</strong>Money demand and supply; equilibrium interest rate; monetary policy effects on rates</li>
+                <li><strong>4.6 Monetary Policy</strong>Expansionary and contractionary monetary policy; open market operations; reserve rate; policy rate</li>
+                <li><strong>4.7 The Loanable Funds Market</strong>Supply and demand of loanable funds; interest rate; crowding out</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 5 · Long-Run Consequences of Stabilization Policies</h3><span class="pct">20–30%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Long-run effects of stabilization policy — the Phillips curve and economic growth.</p>
+              <ul class="topic-list">
+                <li><strong>5.1 Fiscal and Monetary Policy Actions</strong>Short-run effects of policy on AD, output, prices, and interest rates</li>
+                <li><strong>5.2 The Phillips Curve</strong>Short-run and long-run Phillips curve; inflation-unemployment tradeoff; natural rate; shifts of SRPC</li>
+                <li><strong>5.3 Money Growth and Inflation</strong>Quantity theory of money; MV = PQ; money supply growth and inflation</li>
+                <li><strong>5.4 Government Deficits and the National Debt</strong>Deficits and surpluses; national debt; effects on interest rates and investment</li>
+                <li><strong>5.5 Crowding Out</strong>How government borrowing raises interest rates and reduces private investment</li>
+                <li><strong>5.6 Economic Growth</strong>Sources of long-run growth; physical and human capital; technology; saving and investment</li>
+                <li><strong>5.7 Public Policy and Economic Growth</strong>Policies that promote growth: education, infrastructure, R&amp;D, property rights</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 6 · Open Economy</h3><span class="pct">10–13%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">International trade, exchange rates, and international capital flows in an open economy.</p>
+              <ul class="topic-list">
+                <li><strong>6.1 Balance of Payments Accounts</strong>Current account and capital/financial account; BOP identity</li>
+                <li><strong>6.2 Exchange Rates</strong>Definition; appreciation and depreciation</li>
+                <li><strong>6.3 The Foreign Exchange Market</strong>Supply and demand in the FX market; equilibrium exchange rate</li>
+                <li><strong>6.4 Effect of Policy and Economic Conditions on FX Market</strong>Effects of interest rates, inflation, and capital flows on exchange rates</li>
+                <li><strong>6.5 Changes in FX Market and Net Exports</strong>Effects of exchange rate changes on net exports and AD</li>
+                <li><strong>6.6 Real Interest Rates and International Capital Flows</strong>How real interest rate differentials affect capital flows and exchange rates</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="course-bottom">
+        <div class="ced-box">
+          <div class="info"><h4>📄 Download CED</h4><p>College Board Course and Exam Description</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-macroeconomics-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+        <div class="option-grid">
+          <a href="macro-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>Past exam papers</p></a>
+          <a href="macro-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB Question Bank</h3><p>College Board question bank</p></a>
         </div>
       </div>
     </div>
@@ -72,6 +223,5 @@
       Content is free for learning use. Reproduction or commercial use is prohibited.
     </div>
   </footer>
-
 </body>
 </html>
