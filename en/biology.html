@@ -5,9 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biology | Knowledge Master</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .course-top { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; padding: 40px 0 0; }
+    .course-left { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .course-left .cn { font-size: 3.4rem; font-weight: 800; color: #4a0072; line-height: 1.2; margin: 0; letter-spacing: 2px; }
+    .course-right { flex: 1 1 420px; min-width: 300px; display: flex; align-items: center; }
+    .video-box { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 3px solid #000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-box img { width: 100%; height: 100%; object-fit: cover; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .course-desc { margin-top: 72px; background: #faf7fd; border: 1px solid #ede4f7; border-radius: 20px; padding: 48px 44px; }
+    .desc-title { text-align: center; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px dashed #e2d4f0; }
+    .desc-title h2 { font-size: 1.9rem; color: #4a0072; margin: 0; }
+    .desc-title p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; letter-spacing: 1px; }
+    .desc-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: #64748b; line-height: 2; font-size: 1.02rem; background: #fff; border: 1px solid #ede4f7; border-radius: 14px; padding: 26px 32px; }
+    .desc-intro strong { color: #4a0072; }
+    .units-overview { margin-top: 8px; }
+    .units-overview h3 { font-size: 1.35rem; color: #4a0072; margin-bottom: 20px; padding-left: 14px; border-left: 5px solid #660099; }
+    .weight-list { display: grid; gap: 12px; }
+    .weight-row { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #ede4f7; border-radius: 12px; padding: 14px 20px; }
+    .weight-row .unit-tag { flex-shrink: 0; font-weight: 700; color: #660099; font-size: 0.95rem; min-width: 62px; }
+    .weight-row .unit-name { flex: 1; color: #1e293b; font-size: 0.98rem; }
+    .weight-row .unit-pct { flex-shrink: 0; background: #660099; color: #fff; font-size: 0.82rem; padding: 4px 14px; border-radius: 999px; font-weight: 600; }
+    .weight-note { margin-top: 16px; background: #f3e8ff; border-left: 4px solid #660099; border-radius: 0 10px 10px 0; padding: 14px 20px; color: #64748b; font-size: 0.95rem; line-height: 1.8; }
+    .unit-cards { margin-top: 48px; display: grid; gap: 28px; }
+    .unit-card { background: #fff; border: 1px solid #ede4f7; border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s; }
+    .unit-card:hover { box-shadow: 0 12px 32px rgba(102,0,153,0.1); }
+    .unit-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: linear-gradient(135deg, #660099 0%, #4a0072 100%); color: #fff; padding: 18px 26px; flex-wrap: wrap; }
+    .unit-head .title { font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.5; }
+    .unit-head .pct { flex-shrink: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+    .unit-body { padding: 24px 26px 28px; }
+    .unit-body .unit-desc { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #ede4f7; line-height: 1.8; }
+    .topic-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .topic-list li { line-height: 1.8; color: #475569; font-size: 0.94rem; padding-left: 16px; border-left: 3px solid #ede9fe; }
+    .topic-list li strong { color: #4a0072; display: block; margin-bottom: 2px; font-size: 0.96rem; }
+    .course-bottom { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+    .ced-box { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 28px; flex-wrap: wrap; gap: 16px; transition: all 0.2s; }
+    .ced-box:hover { border-color: #660099; box-shadow: 0 6px 18px rgba(102,0,153,0.1); }
+    .ced-box .info h4 { margin: 0 0 4px; font-size: 1.05rem; }
+    .ced-box .info p { margin: 0; font-size: 0.88rem; color: #64748b; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .option-card { display: block; text-decoration: none; color: inherit; border: 2px solid #e2e8f0; border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s; background: #fff; }
+    .option-card:hover { border-color: #660099; transform: translateY(-6px); box-shadow: 0 16px 36px rgba(102,0,153,0.15); }
+    .option-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .option-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: #4a0072; }
+    .option-card p { margin: 0; font-size: 0.9rem; color: #64748b; }
+    .download-btn { flex-shrink: 0; padding: 10px 24px; background: #660099; color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.92rem; transition: background 0.2s; }
+    .download-btn:hover { background: #4a0072; }
+    @media (max-width: 700px) { .course-left .cn { font-size: 2.4rem; } }
+    @media (max-width: 600px) { .course-desc { padding: 28px 20px; } .option-grid { grid-template-columns: 1fr; } .unit-head { flex-direction: column; align-items: flex-start; } .weight-row { flex-wrap: wrap; } }
+  </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">Knowledge Master</a>
@@ -15,52 +63,188 @@
         <a href="index.html">Home</a>
         <a href="courses.html" class="active">Courses</a>
         <a href="about.html">About</a>
-        <a href="../zh/index.html" class="lang-switch">中文</a>
+        <a href="../zh/biology.html" class="lang-switch">中文</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>Biology</h1>
-      <p>AP Biology</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
-      <div class="course-intro">
-        [Course introduction placeholder] This section will introduce the
-        content, exam focus, and study tips for AP Biology.
+      <div class="course-top">
+        <div class="course-left">
+          <h1 class="cn">Biology</h1>
+        </div>
+        <div class="course-right">
+          <div class="video-box">
+            <img src="../images/bio-pic.png" alt="Biology">
+          </div>
+        </div>
       </div>
-      <div class="download-section">
-        <h2>📥 Downloads</h2>
-        <div class="download-list">
 
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Notes (PDF)</h4>
-              <p>Course notes and key concepts</p>
-            </div>
-            <a href="../files/bio-notes.pdf" class="download-btn" download>Download</a>
+      <div class="course-desc">
+        <div class="desc-title">
+          <h2>Course Overview</h2>
+          <p>AP BIOLOGY · COURSE OVERVIEW</p>
+        </div>
+        <div class="desc-intro">
+          AP Biology is divided into <strong>8 units</strong>, built around four core concepts:
+          <strong>Evolution</strong>, <strong>Energetics</strong>,
+          <strong>Information Storage and Transmission</strong>,
+          <strong>Systems Interactions</strong>.
+        </div>
+        <div class="units-overview">
+          <h3>Units and Exam Weighting</h3>
+          <div class="weight-list">
+            <div class="weight-row"><span class="unit-tag">Unit 1</span><span class="unit-name">Chemistry of Life</span><span class="unit-pct">8–11%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 2</span><span class="unit-name">Cells</span><span class="unit-pct">10–13%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 3</span><span class="unit-name">Cellular Energetics</span><span class="unit-pct">12–16%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 4</span><span class="unit-name">Cell Communication and Cell Cycle</span><span class="unit-pct">10–15%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 5</span><span class="unit-name">Heredity</span><span class="unit-pct">8–11%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 6</span><span class="unit-name">Gene Expression and Regulation</span><span class="unit-pct">12–16%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 7</span><span class="unit-name">Natural Selection</span><span class="unit-pct">13–20%</span></div>
+            <div class="weight-row"><span class="unit-tag">Unit 8</span><span class="unit-name">Ecology</span><span class="unit-pct">10–15%</span></div>
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 Past Papers (PDF)</h4>
-              <p>Includes past exam papers</p>
-            </div>
-            <a href="../files/bio-past-papers.pdf" class="download-btn" download>Download</a>
+          <div class="weight-note">
+            <strong>Note</strong>: Unit 7 (Natural Selection) carries the highest weight and is the course's central thread.
+            Units 3 and 6 are tied for second — both are key units.
           </div>
-
-          <div class="download-item">
-            <div class="info">
-              <h4>📄 CB Question Bank (PDF)</h4>
-              <p>College Board official question bank</p>
+        </div>
+        <div class="unit-cards">
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 1 · Chemistry of Life</h3><span class="pct">8–11%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Builds the chemistry foundation for biology — the structure and function of water, elements, and biological macromolecules.</p>
+              <ul class="topic-list">
+                <li><strong>1.1 Structure of Water and Hydrogen Bonding</strong>Polarity, hydrogen bonds, specific heat, solvent properties, cohesion and adhesion; water's importance to life</li>
+                <li><strong>1.2 Elements of Life</strong>Main elements (CHNOPS); roles in biomolecules</li>
+                <li><strong>1.3 Introduction to Macromolecules</strong>Monomers and polymers; dehydration synthesis and hydrolysis</li>
+                <li><strong>1.4 Carbohydrates</strong>Mono-, di-, and polysaccharides; energy storage and structural support</li>
+                <li><strong>1.5 Lipids</strong>Fatty acids, triglycerides, phospholipids, steroids; hydrophobic properties and membranes; energy storage</li>
+                <li><strong>1.6 Nucleic Acids</strong>DNA and RNA structure; nucleotides; storage and transmission of genetic information</li>
+                <li><strong>1.7 Proteins</strong>Amino acid structure; peptide bonds; four levels of protein structure; structure-function relationship; denaturation</li>
+              </ul>
             </div>
-            <a href="../files/bio-cb-bank.pdf" class="download-btn" download>Download</a>
           </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 2 · Cells</h3><span class="pct">10–13%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Focuses on cell structure and function — especially membrane structure and transport mechanisms.</p>
+              <ul class="topic-list">
+                <li><strong>2.1 Cell Structure and Function</strong>Prokaryotic vs. eukaryotic cells; organelles; endosymbiotic theory</li>
+                <li><strong>2.2 Cell Size</strong>Surface area-to-volume ratio; why small cells are more efficient</li>
+                <li><strong>2.3 Plasma Membrane</strong>Phospholipid bilayer; fluid mosaic model; membrane protein functions</li>
+                <li><strong>2.4 Membrane Permeability</strong>Selective permeability; factors affecting transport</li>
+                <li><strong>2.5 Membrane Transport</strong>Passive vs. active transport; diffusion, osmosis, pumps</li>
+                <li><strong>2.6 Facilitated Diffusion</strong>Channel and carrier proteins; concentration gradient</li>
+                <li><strong>2.7 Tonicity and Osmoregulation</strong>Hypertonic, hypotonic, isotonic solutions; cell volume changes; osmoregulation</li>
+                <li><strong>2.8 Mechanisms of Transport</strong>Sodium-potassium pump; cotransport; endocytosis and exocytosis</li>
+                <li><strong>2.9 Cell Compartmentalization</strong>Functions of the endomembrane system in eukaryotes</li>
+                <li><strong>2.10 Origins of Cell Compartmentalization</strong>Endosymbiotic theory; evolution of membrane systems</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 3 · Cellular Energetics</h3><span class="pct">12–16%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">How cells acquire and use energy — enzymes, photosynthesis, and cellular respiration.</p>
+              <ul class="topic-list">
+                <li><strong>3.1 Enzymes</strong>Enzyme structure and function; active site; catalysis; factors affecting activity</li>
+                <li><strong>3.2 Environmental Impacts on Enzyme Function</strong>Effects of temperature, pH, substrate concentration, and inhibitors</li>
+                <li><strong>3.3 Cellular Energy</strong>ATP structure and function; energy coupling; redox reactions</li>
+                <li><strong>3.4 Photosynthesis</strong>Light reactions and Calvin cycle; light energy to chemical energy; chloroplast structure</li>
+                <li><strong>3.5 Cellular Respiration</strong>Glycolysis, citric acid cycle, oxidative phosphorylation; mitochondria; ATP yield</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 4 · Cell Communication and Cell Cycle</h3><span class="pct">10–15%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">How cells receive and respond to signals, and how they divide and regulate the cell cycle.</p>
+              <ul class="topic-list">
+                <li><strong>4.1 Cell Communication</strong>Types of signaling; local and long-distance communication</li>
+                <li><strong>4.2 Introduction to Signal Transduction</strong>Reception, transduction, response</li>
+                <li><strong>4.3 Signal Transduction Pathways</strong>Receptor types; second messengers; phosphorylation cascades</li>
+                <li><strong>4.4 Feedback</strong>Negative and positive feedback; roles in biological systems</li>
+                <li><strong>4.5 Cell Cycle</strong>Interphase and mitotic phase; stages of mitosis; cell cycle regulation</li>
+                <li><strong>4.6 Regulation of Cell Cycle</strong>Checkpoints; cyclins and CDKs; cancer and loss of cycle control</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 5 · Heredity</h3><span class="pct">8–11%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">How genetic information is transmitted — from meiosis to Mendelian genetics.</p>
+              <ul class="topic-list">
+                <li><strong>5.1 Meiosis</strong>Stages of meiosis; homologous chromosome separation; gamete formation</li>
+                <li><strong>5.2 Meiosis and Genetic Diversity</strong>Crossing over; independent assortment; sources of genetic variation</li>
+                <li><strong>5.3 Mendelian Genetics</strong>Dominant and recessive; law of segregation; law of independent assortment; Punnett squares</li>
+                <li><strong>5.4 Non-Mendelian Genetics</strong>Incomplete dominance, codominance, multiple alleles, polygenic inheritance, linked genes</li>
+                <li><strong>5.5 Environmental Effects on Phenotype</strong>Phenotype = genotype + environment; environmental effects on gene expression</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 6 · Gene Expression and Regulation</h3><span class="pct">12–16%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Molecular-level study of how DNA is replicated, transcribed, translated, and regulated.</p>
+              <ul class="topic-list">
+                <li><strong>6.1 DNA and RNA Structure</strong>Nucleotide structure; double helix; RNA types and functions</li>
+                <li><strong>6.2 DNA Replication</strong>Semiconservative replication; replication fork; key enzymes (helicase, polymerase, ligase)</li>
+                <li><strong>6.3 Transcription and RNA Processing</strong>Transcription mechanism; mRNA processing (capping, tailing, splicing)</li>
+                <li><strong>6.4 Translation</strong>Genetic code; ribosomes; tRNA; protein synthesis</li>
+                <li><strong>6.5 Regulation of Gene Expression</strong>Prokaryotic operon model; eukaryotic transcriptional regulation; epigenetics</li>
+                <li><strong>6.6 Gene Expression and Cell Specialization</strong>Cell differentiation; tissue-specific gene expression</li>
+                <li><strong>6.7 Mutations</strong>Point mutations and frameshift mutations; effects on protein function</li>
+                <li><strong>6.8 Biotechnology</strong>PCR, gel electrophoresis, DNA sequencing, CRISPR, and other tools and applications</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 7 · Natural Selection</h3><span class="pct">13–20%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">The course's central thread — the mechanisms and evidence of evolution.</p>
+              <ul class="topic-list">
+                <li><strong>7.1 Introduction to Natural Selection</strong>Darwin's theory; basic principles of natural selection</li>
+                <li><strong>7.2 Natural Selection</strong>Variation, inheritance, selection pressure; adaptation and evolution</li>
+                <li><strong>7.3 Artificial Selection</strong>Human-directed selection; comparison with natural selection</li>
+                <li><strong>7.4 Population Genetics</strong>Gene pool; allele frequencies; Hardy-Weinberg principle</li>
+                <li><strong>7.5 Hardy-Weinberg Equilibrium</strong>Conditions for equilibrium; evolutionary forces that cause deviation</li>
+                <li><strong>7.6 Evidence of Evolution</strong>Fossil record, anatomy, molecular biology, biogeography</li>
+                <li><strong>7.7 Common Ancestry</strong>Phylogenetic trees; homologous vs. analogous structures</li>
+                <li><strong>7.8 Continuing Evolution</strong>Antibiotic resistance, pesticide resistance, and other modern examples</li>
+                <li><strong>7.9 Phylogeny</strong>Constructing and interpreting phylogenetic trees; molecular clocks</li>
+                <li><strong>7.10 Speciation</strong>Geographic and reproductive isolation; sympatric and allopatric speciation</li>
+                <li><strong>7.11 Variations in Populations</strong>Genetic drift, gene flow, mutation, and selection</li>
+                <li><strong>7.12 Origins of Life on Earth</strong>Early Earth conditions; hypotheses on the origin of life; RNA world</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unit-card">
+            <div class="unit-head"><h3 class="title">Unit 8 · Ecology</h3><span class="pct">10–15%</span></div>
+            <div class="unit-body">
+              <p class="unit-desc">Interactions between organisms and their environment — from individuals to ecosystems.</p>
+              <ul class="topic-list">
+                <li><strong>8.1 Responses to the Environment</strong>Animal behavior; taxis, migration, biological rhythms</li>
+                <li><strong>8.2 Energy Flow Through Ecosystems</strong>Food chains and webs; trophic levels; energy pyramid; 10% rule</li>
+                <li><strong>8.3 Population Ecology</strong>Population growth models (exponential, logistic); carrying capacity</li>
+                <li><strong>8.4 Effect of Density on Populations</strong>Density-dependent and density-independent factors</li>
+                <li><strong>8.5 Community Ecology</strong>Species interactions (competition, predation, symbiosis); niche; community structure</li>
+                <li><strong>8.6 Biodiversity</strong>Genetic, species, and ecosystem diversity; factors affecting biodiversity</li>
+                <li><strong>8.7 Disruptions in Ecosystems</strong>Human impacts; invasive species; habitat destruction; conservation biology</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="course-bottom">
+        <div class="ced-box">
+          <div class="info"><h4>📄 Download CED</h4><p>College Board Course and Exam Description</p></div>
+          <a href="https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description.pdf" class="download-btn" target="_blank" rel="noopener">Download</a>
+        </div>
+        <div class="option-grid">
+          <a href="bio-past-papers.html" class="option-card"><div class="icon">📄</div><h3>Past Papers</h3><p>Past exam papers</p></a>
+          <a href="bio-cb-bank.html" class="option-card"><div class="icon">📝</div><h3>CB Question Bank</h3><p>College Board question bank</p></a>
         </div>
       </div>
     </div>
@@ -72,6 +256,5 @@
       Content is free for learning use. Reproduction or commercial use is prohibited.
     </div>
   </footer>
-
 </body>
 </html>
